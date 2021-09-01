@@ -1,0 +1,35 @@
+.flow-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &.highlight, &:hover {
+        .icon-frame {
+            color: white;
+            background-color: #0a7ab0;
+        }
+    }
+
+    .icon-frame {
+        height: 70px;
+        width: 70px;
+        margin: 5px;
+        border:1px solid rgba(210, 210, 210, 0.8);
+        color: #0a7ab0;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: color .2s, background-color .2s;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        & > * {
+            height: calc(50%);
+            width: calc(50%);
+        }
+    }
+}

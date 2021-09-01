@@ -1,0 +1,26 @@
+.flow-bar {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .btn-task {
+        border: 1px solid #0a7ab0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        min-width: 180px;
+        background: none;
+        border-radius: 3px;
+        color: #0a7ab0;
+        font-size: 0.9rem;
+        transition: background .2s;
+
+        &:hover {
+            background: rgba(10, 122, 176, 0.05);
+            cursor: pointer;
+        }
+    }
+}

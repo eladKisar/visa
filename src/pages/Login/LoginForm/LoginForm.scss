@@ -1,0 +1,21 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    .item {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .btn-login {
+        background-color: #0a7ab0;
+        &:disabled {
+            background-color: initial;
+        }
+    }
+}

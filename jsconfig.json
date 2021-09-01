@@ -1,0 +1,35 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "jsxImportSource": "react",
+        "sourceRoot": "",
+        "paths": {
+            "@": [
+                "src"
+            ],
+            "@assets": [
+                "src/assets"
+            ],
+            "@components": [
+                "src/components"
+            ],
+            "@pages": [
+                "src/pages"
+            ],
+            "@services": [
+                "src/services"
+            ],
+            "@store": [
+                "src/store"
+            ],
+            "@utils": [
+                "src/utils"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "public"
+    ]
+}

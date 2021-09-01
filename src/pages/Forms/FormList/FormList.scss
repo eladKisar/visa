@@ -1,0 +1,25 @@
+.form-list {
+    width: 100%;
+
+    .titles {
+        .field {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: capitalize;
+        }
+    }
+
+    .actions {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+
+        .action-item {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
