@@ -10,6 +10,8 @@ import { NotFoundPage } from 'pages/NotFound';
 import NavBar from 'components/NavBar/NavBar';
 import configureStore from 'store/configure';
 
+import  NewForm  from './pages/Forms/NewForm/NewForm';
+
 import 'react-toastify/dist/ReactToastify.css';
 import 'utils/constants/globals.css';
 
@@ -22,12 +24,12 @@ const App = () => {
                 <Router>
                     <NavBar />
                     <Switch>
-                        <Route exact path='/' component={FormsPage} />
-                        <Route exact path='/login' component={LoginPage} />
+                        <Route exact path='/' component={NewForm} />
+                        {/* <Route exact path='/login' component={LoginPage} />
                         <Route exact path='/register' component={RegisterPage} />
                         <Route exact path='/form' component={FormContent} />
                         <Route exact path='/form/:id' component={FormContent} />
-                        <Route component={NotFoundPage} />
+                        <Route component={NotFoundPage} /> */}
                     </Switch>
                 </Router>
             </Provider>
