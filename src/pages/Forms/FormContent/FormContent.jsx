@@ -15,7 +15,8 @@ import DateUtils from "@date-io/moment";
 import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { useParams } from 'react-router-dom';
 
-import { FORM_FIELDS, FORM_MODES } from 'utils/constants/form';
+import { FORM_MODES } from 'utils/constants/enums';
+import { FORM_FIELDS} from 'utils/constants/form';
 import { useFormState } from 'utils/hooks/useFormState';
 import { createForm, editForm, getAllForms, setForm } from 'store/forms/forms.actions';
 

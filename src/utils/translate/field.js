@@ -1,4 +1,4 @@
-import { SEVERITY_OPTIONS } from 'utils/constants/form';
+import { SEVERITY_OPTIONS } from 'utils/constants/enums';
 
 export const translateField = (value) => {
     for (const option of SEVERITY_OPTIONS) {

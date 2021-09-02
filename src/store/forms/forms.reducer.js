@@ -1,5 +1,5 @@
 import { ADD_FIELD, LOAD_ALL_FORMS, NEW_FORM, REMOVE_FIELD, SET_FORM } from './form.types';
-import { FORM_MODES } from 'utils/constants/form';
+import { FORM_MODES } from 'utils/constants/enums';
 
 const initialState = {
     forms: [],

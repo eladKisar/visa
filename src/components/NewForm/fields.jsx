@@ -5,12 +5,16 @@ import {
     MenuItem,
 } from '@material-ui/core';
 import DateUtils from "@date-io/moment";
+import SearchBar from '../SearchBar/SearchBar.jsx'
 
 import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 const Fields = ({ fields }) => {
 
     const renderField = ({ field, type, options }, form) => {
+        console.log('type',type)
+        console.log('options',options)
+
         switch (type) {
             case 'enum':
                 return (
@@ -44,6 +48,13 @@ const Fields = ({ fields }) => {
                         />
                     </MuiPickersUtilsProvider>
                 );
+                case 'searchBar':
+                    return (
+                        <SearchBar>
+                           
+                        </SearchBar>
+                    );
+                
             default:
                 return <TextField
                     dir="rtl"
