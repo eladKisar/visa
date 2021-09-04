@@ -18,11 +18,27 @@ export const FormFields = {
         { field: 'name', displayName: 'שם מלא', type: 'text' },
         { field: 'gender', displayName: 'מין', type: 'enum', options: GENDER },
         { field: 'status', displayName: 'סטטוס', type: 'enum', options: STATUS },
-        { field: 'birthDate', displayName: 'תאריך לידה', type: 'date' },    
+        { field: 'birthDate', displayName: 'תאריך לידה', type: 'date' },
         { field: 'birthTown', displayName: 'עיר לידה', type: 'searchBar' },
+        { field: 'birthCity', displayName: 'ארץ לידה', type: 'searchBar' },
         { field: 'personId', displayName: 'תעודת זהות', type: 'text' },
         { field: 'phoneNumber', displayName: 'מספר טלפון', type: 'text' },
-        { field: 'mailAdress', displayName: 'כתובת מייל', type: 'text'}
+        { field: 'mailAdress', displayName: 'כתובת מייל', type: 'text' },
+        { field: 'primaryCitizenship', displayName: 'אזרחות ראשית', type: 'searchBar' },
+        {
+            field: 'foreignCitizenship', displayName: 'אזרחות זרה', type: 'Checkbox',
+            onTrueField: [
+            { field: 'foreignCitizenshipCountry', displayName: 'איזה מדינה', type: 'searchBar' },
+            {
+                field: 'PassportOfForeignCitizenship', displayName: 'האם קיים דרכון של המדינה', type: 'Checkbox',
+                onTrueField: [{ field: 'ForeignPassportNumber', displayName: 'מספר דרכון', type: 'text' }]
+            }
+
+            ]
+        }
+
+
+
     ],
 
     '2': [{ field: 'id', displayName: '222222ה', type: 'text' },

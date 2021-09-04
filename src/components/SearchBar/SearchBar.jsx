@@ -1,4 +1,5 @@
 import React from "react";
+import './SearchBar.css'
 /* global google */
 
 
@@ -18,15 +19,16 @@ class SearchBar extends React.Component {
   }
 
   handlePlaceChanged(){
+      console.log('handlePlaceChanged')
     const place = this.autocomplete.getPlace();
-    this.props.onPlaceLoaded(place);
+  //  this.props.onPlaceLoaded(place);
   }
 
 
 
   render() {
     return (
-        <input ref={this.autocompleteInput}  id="autocomplete" placeholder="Enter your address"
+        <input ref={this.autocompleteInput}  className="autocomplete" placeholder="הקלד כתובת"
          type="text"></input>
     );
   }
