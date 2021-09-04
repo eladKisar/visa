@@ -1,5 +1,5 @@
 
-import { SEVERITY_OPTIONS, GENDER, INTERVIEW_LOCATION, STATUS, FORM_MODES } from './enums'
+import { SEVERITY_OPTIONS, GENDER, INTERVIEW_LOCATION, STATUS, TRIP_DURATION, HOTEL_OR_ADDRESS } from './enums'
 
 export const FORM_FIELDS = [
     { field: 'id', displayName: 'מזהה משימה', type: 'text' },
@@ -14,6 +14,7 @@ export const FORM_FIELDS = [
 
 export const FormFields = {
     '1': [
+        //פרטים אישיים
         { field: 'interviewLocation', displayName: 'מיקום הראיון', type: 'enum', options: INTERVIEW_LOCATION },
         { field: 'name', displayName: 'שם מלא', type: 'text' },
         { field: 'gender', displayName: 'מין', type: 'enum', options: GENDER },
@@ -28,27 +29,57 @@ export const FormFields = {
         {
             field: 'foreignCitizenship', displayName: 'אזרחות זרה', type: 'Checkbox',
             onTrueField: [
-            { field: 'foreignCitizenshipCountry', displayName: 'איזה מדינה', type: 'searchBar' },
-            {
-                field: 'PassportOfForeignCitizenship', displayName: 'האם קיים דרכון של המדינה', type: 'Checkbox',
-                onTrueField: [{ field: 'ForeignPassportNumber', displayName: 'מספר דרכון', type: 'text' }]
-            }
+                { field: 'foreignCitizenshipCountry', displayName: 'איזה מדינה', type: 'searchBar' },
+                {
+                    field: 'PassportOfForeignCitizenship', displayName: 'האם קיים דרכון של המדינה', type: 'Checkbox',
+                    onTrueField: [{ field: 'ForeignPassportNumber', displayName: 'מספר דרכון', type: 'text' }]
+                }
 
             ]
-        }
-
+        },
+        //כתובת מגורים
+        { field: 'street', displayName: 'רחוב', type: 'text' },
+        { field: 'ApartmentNumber', displayName: 'מספר דירה', type: 'text' },
+        { field: 'city', displayName: 'עיר', type: 'text' },
+        { field: 'country', displayName: 'מדינה', type: 'searchBar' }
 
 
     ],
 
-    '2': [{ field: 'id', displayName: '222222ה', type: 'text' },
-    { field: 'name', displayName: 'שם 222222', type: 'text' },
-    { field: 'owner', displayName: '2222222 ע"י', type: 'text' },
-    { field: 'location', displayName: '222222', type: 'text' },
-    { field: 'end_time', displayName: 'זמן 222222', type: 'date' },
-    { field: 'start_time', displayName: 'זמן 22222222', type: 'date' },
-    { field: 'create_time', displayName: 'זמן יצירת 2222222', type: 'date' },
-    { field: 'priority', displayName: '222222222', type: 'enum', options: SEVERITY_OPTIONS }],
+    '2': [
+        { field: 'flightDate', displayName: 'תאריך טיסה משוער', type: 'date' },
+        // {
+        //     field: 'tripDurationList', displayName: 'משך הטיול', type: 'list', listOptions: {
+        //         'enum':{ field: 'tripDurationEnum', displayName: 'הזנת מספר', type: 'enum', options: TRIP_DURATION },
+        //         'tripDunbrationNumber':{ field: 'tripDurationNumber', displayName: 'בחירה', type: 'text', lessThan24HoursTrip: false }
+        //     }
+        // },
+        {
+            field: 'hotelOrAddressList', displayName: 'מלון או כתובת', type: 'list',
+            lessThan24HoursTrip: false,
+            listOptions: {
+                'enum': [{ field: 'hotelOrAddress', displayName: '', type: 'enum', options: HOTEL_OR_ADDRESS }],
+                'ADDRESS': [
+                    // field: 'ApartmentList', displayName: 'כתובת', type: 'list', listOptions: [
+                    { field: 'ApartmentStreet', displayName: 'רחוב', type: 'text' },
+                    { field: 'ApartmentNumber', displayName: 'מספר דירה', type: 'text' },
+                    { field: 'ApartmentCity', displayName: 'עיר', type: 'text' },
+                    { field: 'ApartmentCountry', displayName: 'מדינה', type: 'searchBar' },
+                    { field: 'ApartmentpostalCode', displayName: 'מיקוד', type: 'text' },
+
+                    //  ]
+                ],
+                'HOTEL': [
+                    //  field: 'hotelList', displayName: 'מלון', type: 'list', listOptions:
+                    { field: 'hotel', displayName: 'מספר דירה', type: 'text' },
+                    { field: 'HotelCity', displayName: 'עיר', type: 'text' },
+                    { field: 'hotelCountry', displayName: 'מדינה', type: 'searchBar' }
+                ]
+            }
+        }
+
+        ,
+    ],
 
     '3': [{ field: 'id', displayName: 'מזהה 3333333', type: 'text' },
     { field: 'name', displayName: 'שם 333333', type: 'text' },

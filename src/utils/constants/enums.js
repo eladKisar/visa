@@ -24,7 +24,21 @@ export const STATUS =
         { value: 'CIVILLY_MARRIED', label: 'נשוי אזרחית', },
         { value: 'PUBLICLY_KNOWN', label: 'ידועים בציבור' }
     ]
+
+export const TRIP_DURATION =
+    [
+        { value: 'DAYS', label: 'ימים', },
+        { value: 'WEEKS', label: 'שבועות' },
+        { value: 'YESRA', label: 'שנים', },
+        { value: 'LASS_THAN_24_HOURS', label: 'פחות מ 24 שעות' },
+   ]
+   export const HOTEL_OR_ADDRESS =
+   [
+       { value: 'HOTEL', label: 'מלון', },
+       { value: 'ADDRESS', label: 'כתובת' },
+  ]
 export const FORM_MODES = {
     NEW: 'NEW',
     EDIT: 'EDIT',
 }
+
