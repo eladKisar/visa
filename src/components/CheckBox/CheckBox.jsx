@@ -3,7 +3,7 @@ import {
     TableCell,
     Checkbox,
 } from '@material-ui/core';
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import RenderField from '../RenderField/RenderField.jsx'
 const CheckBox = ( {field}) => {
     const [checkedState, setCheckedState] = useState(false);

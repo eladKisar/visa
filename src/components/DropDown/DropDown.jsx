@@ -6,8 +6,7 @@ import {
 import React, { useState, useEffect } from "react";
 import RenderField from '../RenderField/RenderField.jsx'
 import Select from 'react-select'
-const DropDown = (fieldss) => {
-    const { field } = fieldss
+const DropDown = ({field}) => {
     const [selectState, setSelectState] = useState();
 
     const handleChange = (value) => {
@@ -18,9 +17,9 @@ const DropDown = (fieldss) => {
             <Select options={field.options}   onChange={value => handleChange(value)}
 >
             </Select>
-            { field.listOptions && selectState?
+            { field.onSelectOption && selectState?
                 <dev> {
-                    field.listOptions[selectState]
+                    field.onSelectOption[selectState]
                         .filter(({ field }) => field !== 'id')
                         .map(
                             (field, index) =>

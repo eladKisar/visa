@@ -57,7 +57,7 @@ export const FormFields = {
         {
             field: 'hotelOrAddressList', displayName: 'מלון או כתובת', type: 'select',options: HOTEL_OR_ADDRESS,
             lessThan24HoursTrip: false,
-            listOptions: {
+           onSelectOption: {
                 'ADDRESS': [
                     // field: 'ApartmentList', displayName: 'כתובת', type: 'list', listOptions: [
                     { field: 'ApartmentStreet', displayName: 'רחוב', type: 'text' },
