@@ -7,6 +7,7 @@ import { useState } from "react";
 import RenderField from '../RenderField/RenderField.jsx'
 const CheckBox = ( {field}) => {
     const [checkedState, setCheckedState] = useState(false);
+    //console.log('checkedState',checkedState)
     return (
         <div>
             <Checkbox id='CheckBox'

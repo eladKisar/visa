@@ -1,5 +1,5 @@
 
-import { SEVERITY_OPTIONS, GENDER, INTERVIEW_LOCATION, STATUS, TRIP_DURATION, HOTEL_OR_ADDRESS } from './enums'
+import { SEVERITY_OPTIONS, GENDER, INTERVIEW_LOCATION, STATUS, TRIP_DURATION, HOTEL_OR_ADDRESS, TRIP_PAYER, CLOSENESS } from './enums'
 
 export const FORM_FIELDS = [
     { field: 'id', displayName: 'מזהה משימה', type: 'text' },
@@ -48,16 +48,22 @@ export const FormFields = {
 
     '2': [
         { field: 'flightDate', displayName: 'תאריך טיסה משוער', type: 'date' },
-        // {
-        //     field: 'tripDurationList', displayName: 'משך הטיול', type: 'list', listOptions: {
-        //         'select':{ field: 'tripDurationselect', displayName: 'הזנת מספר', type: 'select', options: TRIP_DURATION },
-        //         'tripDunbrationNumber':{ field: 'tripDurationNumber', displayName: 'בחירה', type: 'text', lessThan24HoursTrip: false }
-        //     }
-        // },
         {
-            field: 'hotelOrAddressList', displayName: 'מלון או כתובת', type: 'select',options: HOTEL_OR_ADDRESS,
+            field: 'tripDurationList', displayName: 'משך הטיול', type: 'list',
+            listOptions: [
+                { field: 'tripDurationselect', displayName: 'הזנת מספר', type: 'select', options: TRIP_DURATION },
+                {
+                    field: 'tripDurationNumber', displayName: 'בחירה', type: 'text',
+                    lessThan24HoursTrip: false
+                }
+            ]
+
+
+        },
+        {
+            field: 'hotelOrAddressList', displayName: 'מלון או כתובת', type: 'select', options: HOTEL_OR_ADDRESS,
             lessThan24HoursTrip: false,
-           onSelectOption: {
+            onSelectOption: {
                 'ADDRESS': [
                     // field: 'ApartmentList', displayName: 'כתובת', type: 'list', listOptions: [
                     { field: 'ApartmentStreet', displayName: 'רחוב', type: 'text' },
@@ -75,10 +81,30 @@ export const FormFields = {
                     { field: 'hotelCountry', displayName: 'מדינה', type: 'searchBar' }
                 ]
             }
-        }
+        },
 
-        ,
-        
+        {
+            field: `trip'sPayer`, displayName: 'משלם הטיול', type: 'select', options: TRIP_PAYER,
+            onSelectOption: {
+                'ANOTHER_PERSON': [
+                    { field: `trip'sPayerLastName`, displayName: 'שם משפחה', type: 'text' },
+                    { field: `trip'sPayerFirstName`, displayName: 'שם פרטי', type: 'text' },
+                    { field: `trip'sPayerPhonselectber`, displayName: 'מספר טלפון', type: 'text' },
+                    { field: `trip'sPayerMailAdress`, displayName: 'כתובת מייל', type: 'text' },
+                    { field: `trip'sPayerCloseness`, displayName: 'קרבה', type: 'select', options: CLOSENESS },
+                    {
+                        field: `trip'sPayerAddressSameToCustomer`, displayName: '?האם כתובת משלם הטיול איננה זהה לכתובת הלקוח ', type: 'Checkbox',
+                        onMarkCheckbox: [
+                            { field: 'ApartmentStreet', displayName: 'רחוב', type: 'text' },
+                            { field: 'ApartmentNumber', displayName: 'מספר דירה', type: 'text' },
+                            { field: 'ApartmentCity', displayName: 'עיר', type: 'text' },
+                            { field: 'hotelCountry', displayName: 'מדינה', type: 'searchBar' }
+
+                        ]
+                    }
+                ]
+            }
+        }
     ],
 
     '3': [{ field: 'id', displayName: 'מזהה 3333333', type: 'text' },

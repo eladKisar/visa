@@ -10,43 +10,6 @@ const Fields = ({ fields }) => {
     const [lessThan24HoursTripState, setLessThan24HoursTrip] = useState(false);
     const [HotelOrAddress, setHotelOrAddress] = useState(['HOTEL', 'enum']);
 
-    //   useEffect(() => {
-    //     // Should not ever set state during rendering, so do this in useEffect instead.
-    //     setHotelOrAddress('HOTEL');
-    //   }, []);
-
-    // const [checkedState, setCheckedState]= useState(
-    //     new Array(5).fill(false) 
-    //   );
-
-    //   const handleOnChange = (position) => {
-    //     const updatedCheckedState = setLessHotelOrAddress.map((item, index) =>
-    //       index === position ? !item : item
-    //     );
-
-    //     setLessHotelOrAddress(updatedCheckedState);
-    // }
-    const handleChange = (event, field) => {
-        const { value } = event.target;
-
-        switch (value) {
-            case 'LASS_THAN_24_HOURS':
-                setLessThan24HoursTrip(false)
-            case 'HOTEL':
-                if (HotelOrAddress.indexOf(value) === -1) {
-                    setHotelOrAddress([...HotelOrAddress, value]);
-                }
-
-            case 'ADDRESS':
-                if (HotelOrAddress.indexOf(value) === -1) {
-                    setHotelOrAddress([...HotelOrAddress, value]);
-                }
-
-
-            default:
-
-        }
-    }
     return (
         <dev>
             {

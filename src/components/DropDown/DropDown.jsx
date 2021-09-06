@@ -1,7 +1,6 @@
 import {
     TableRow,
     TableCell,
-    Checkbox,
 } from '@material-ui/core';
 import React, { useState, useEffect } from "react";
 import RenderField from '../RenderField/RenderField.jsx'
@@ -12,12 +11,13 @@ const DropDown = ({field}) => {
     const handleChange = (value) => {
               setSelectState(value.value);
     }
+    console.log('field',field)
     return (
         <div>
             <Select options={field.options}   onChange={value => handleChange(value)}
 >
             </Select>
-            { field.onSelectOption && selectState?
+            { field.onSelectOption && selectState && field.onSelectOption[selectState]?
                 <dev> {
                     field.onSelectOption[selectState]
                         .filter(({ field }) => field !== 'id')

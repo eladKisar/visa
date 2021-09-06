@@ -31,12 +31,33 @@ export const TRIP_DURATION =
         { value: 'WEEKS', label: 'שבועות' },
         { value: 'YESRA', label: 'שנים', },
         { value: 'LASS_THAN_24_HOURS', label: 'פחות מ 24 שעות' },
-   ]
-   export const HOTEL_OR_ADDRESS =
-   [
-       { value: 'HOTEL', label: 'מלון', },
-       { value: 'ADDRESS', label: 'כתובת' },
-  ]
+    ]
+export const HOTEL_OR_ADDRESS =
+    [
+        { value: 'HOTEL', label: 'מלון', },
+        { value: 'ADDRESS', label: 'כתובת' },
+    ]
+    export const TRIP_PAYER =
+    [
+        { value: 'CLIENT', label: 'לקוח', },
+        { value: 'CURRENT_EMPLOYER', label: 'מעסיק נוכחי' },
+        { value: 'USA_EMPLOYSER', label: 'מעסיק בארה"ב' },
+        { value: 'ANOTHER_COMPANY_OR_ORGANIZTION', label: 'חברה או ארגון אחר' },
+        { value: 'ANOTHER_PERSON', label: 'אדם אחר' },
+
+
+    ]
+    export const CLOSENESS =
+    [
+        { value: 'PARENT', label: 'הורה', },
+        { value: 'CHILD', label: 'ילד' },
+        { value: 'SPOUSE', label: 'בן/בת זוג' },
+        { value: 'RELATIVE', label: 'קרוב משפחה' },
+        { value: 'FRIEND', label: 'חבר' },
+        { value: 'OTHER', label: 'אחר' },
+
+    ]
+    
 export const FORM_MODES = {
     NEW: 'NEW',
     EDIT: 'EDIT',
