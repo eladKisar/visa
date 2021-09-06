@@ -7,7 +7,7 @@ const Pagination = ({ totalPages,paginate}) => {
     }
 
       return (
-                <div id="app" class="container">
+                <div id="app" className="container">
                     <ul class="page">
                         { pageNumbers.map((number) => (
                                 <li onClick={() => paginate(number)} class="page__numbers">{number}</li>

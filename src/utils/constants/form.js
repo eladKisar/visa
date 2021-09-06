@@ -9,30 +9,30 @@ export const FORM_FIELDS = [
     { field: 'end_time', displayName: 'זמן סיום', type: 'date' },
     { field: 'start_time', displayName: 'זמן התחלה', type: 'date' },
     { field: 'create_time', displayName: 'זמן יצירת הטופס', type: 'date' },
-    { field: 'priority', displayName: 'חשיבות', type: 'enum', options: SEVERITY_OPTIONS },
+    { field: 'priority', displayName: 'חשיבות', type: 'select', options: SEVERITY_OPTIONS },
 ].reverse();
 
 export const FormFields = {
     '1': [
         //פרטים אישיים
-        { field: 'interviewLocation', displayName: 'מיקום הראיון', type: 'enum', options: INTERVIEW_LOCATION },
+        { field: 'interviewLocation', displayName: 'מיקום הראיון', type: 'select', options: INTERVIEW_LOCATION },
         { field: 'name', displayName: 'שם מלא', type: 'text' },
-        { field: 'gender', displayName: 'מין', type: 'enum', options: GENDER },
-        { field: 'status', displayName: 'סטטוס', type: 'enum', options: STATUS },
+        { field: 'gender', displayName: 'מין', type: 'select', options: GENDER },
+        { field: 'status', displayName: 'סטטוס', type: 'select', options: STATUS },
         { field: 'birthDate', displayName: 'תאריך לידה', type: 'date' },
         { field: 'birthTown', displayName: 'עיר לידה', type: 'searchBar' },
         { field: 'birthCity', displayName: 'ארץ לידה', type: 'searchBar' },
         { field: 'personId', displayName: 'תעודת זהות', type: 'text' },
-        { field: 'phoneNumber', displayName: 'מספר טלפון', type: 'text' },
+        { field: 'phonselectber', displayName: 'מספר טלפון', type: 'text' },
         { field: 'mailAdress', displayName: 'כתובת מייל', type: 'text' },
         { field: 'primaryCitizenship', displayName: 'אזרחות ראשית', type: 'searchBar' },
         {
             field: 'foreignCitizenship', displayName: 'אזרחות זרה', type: 'Checkbox',
-            onTrueField: [
+            onMarkCheckbox: [
                 { field: 'foreignCitizenshipCountry', displayName: 'איזה מדינה', type: 'searchBar' },
                 {
                     field: 'PassportOfForeignCitizenship', displayName: 'האם קיים דרכון של המדינה', type: 'Checkbox',
-                    onTrueField: [{ field: 'ForeignPassportNumber', displayName: 'מספר דרכון', type: 'text' }]
+                    onMarkCheckbox: [{ field: 'ForeignPassportNumber', displayName: 'מספר דרכון', type: 'text' }]
                 }
 
             ]
@@ -50,15 +50,14 @@ export const FormFields = {
         { field: 'flightDate', displayName: 'תאריך טיסה משוער', type: 'date' },
         // {
         //     field: 'tripDurationList', displayName: 'משך הטיול', type: 'list', listOptions: {
-        //         'enum':{ field: 'tripDurationEnum', displayName: 'הזנת מספר', type: 'enum', options: TRIP_DURATION },
+        //         'select':{ field: 'tripDurationselect', displayName: 'הזנת מספר', type: 'select', options: TRIP_DURATION },
         //         'tripDunbrationNumber':{ field: 'tripDurationNumber', displayName: 'בחירה', type: 'text', lessThan24HoursTrip: false }
         //     }
         // },
         {
-            field: 'hotelOrAddressList', displayName: 'מלון או כתובת', type: 'list',
+            field: 'hotelOrAddressList', displayName: 'מלון או כתובת', type: 'select',options: HOTEL_OR_ADDRESS,
             lessThan24HoursTrip: false,
             listOptions: {
-                'enum': [{ field: 'hotelOrAddress', displayName: '', type: 'enum', options: HOTEL_OR_ADDRESS }],
                 'ADDRESS': [
                     // field: 'ApartmentList', displayName: 'כתובת', type: 'list', listOptions: [
                     { field: 'ApartmentStreet', displayName: 'רחוב', type: 'text' },
@@ -79,6 +78,7 @@ export const FormFields = {
         }
 
         ,
+        
     ],
 
     '3': [{ field: 'id', displayName: 'מזהה 3333333', type: 'text' },
@@ -88,7 +88,7 @@ export const FormFields = {
     { field: 'end_time', displayName: 'זמן 333333333', type: 'date' },
     { field: 'start_time', displayName: 'זמן 333333333', type: 'date' },
     { field: 'create_time', displayName: 'זמ3333333333333ת 3', type: 'date' },
-    { field: 'priority', displayName: '33333333333', type: 'enum', options: SEVERITY_OPTIONS }],
+    { field: 'priority', displayName: '33333333333', type: 'select', options: SEVERITY_OPTIONS }],
 
     '4': [{ field: 'id', displayName: 'מזהה 444444444', type: 'text' },
     { field: 'name', displayName: 'שם 4444444', type: 'text' },
@@ -97,6 +97,6 @@ export const FormFields = {
     { field: 'end_time', displayName: 'זמן 4444444444', type: 'date' },
     { field: 'start_time', displayName: 'זמן 4444444444', type: 'date' },
     { field: 'create_time', displayName: 'זמן יצירת 4444444444', type: 'date' },
-    { field: 'priority', displayName: '44444444444', type: 'enum', options: SEVERITY_OPTIONS }]
+    { field: 'priority', displayName: '44444444444', type: 'select', options: SEVERITY_OPTIONS }]
 
 };

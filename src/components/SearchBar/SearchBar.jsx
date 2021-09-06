@@ -19,7 +19,6 @@ class SearchBar extends React.Component {
   }
 
   handlePlaceChanged(){
-      console.log('handlePlaceChanged')
     const place = this.autocomplete.getPlace();
   //  this.props.onPlaceLoaded(place);
   }
