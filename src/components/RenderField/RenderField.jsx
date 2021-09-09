@@ -10,9 +10,9 @@ import SearchBar from '../SearchBar/SearchBar.jsx';
 import CheckBox from '../CheckBox/CheckBox.jsx';
 import ElementsCombine from '../ElementsCombine/ElementsCombine.jsx'
 import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-const RenderField = ({field}) => {
-    console.log('field.type',field.type)
-    console.log('field.field',field.field)
+const RenderField = ({ field }) => {
+    console.log('field.type', field.type)
+    console.log('field.field', field.field)
 
     switch (field.type) {
         case 'select':
@@ -49,33 +49,15 @@ const RenderField = ({field}) => {
                 </div>
             );
 
-        // case 'list': 
-        // return(
-        //     <dev> {
-        //         field.listOptions
-        //             .filter(({ field }) => field !== 'id')
-        //             .map(
-        //                 (field, index) =>
-        //                     <TableRow style={{ width: '100%' }} key={index}>
-        //                         <TableCell width="50%" align="right">
-        //                             <RenderField field={field}></RenderField>
-        //                         </TableCell>
-        //                         <TableCell width="50%" align="right">{field.displayName}</TableCell>
-        //                     </TableRow>
-        //             )
-        //     }
-        //     </dev>
+        case 'ElementsCombine':
+            return (
+                <ElementsCombine display={field.display} field={field.elementsList}>
 
-        // )
-        case 'ElementsCombine': 
-        return(
-          <ElementsCombine  field={field.elementsList}>
-
-          </ElementsCombine>
-        )
+                </ElementsCombine>
+            )
         default:
             return <input
-               id={field.field}
+                id={field.field}
                 dir="rtl"
                 value={''}
                 onChange={() => { }}

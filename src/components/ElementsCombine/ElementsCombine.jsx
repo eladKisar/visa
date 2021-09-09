@@ -1,23 +1,20 @@
 import {
     TableRow,
     TableCell,
-    Checkbox,
 } from '@material-ui/core';
 import './ElementsCombine.css'
-import { useState } from "react";
 import RenderField from '../RenderField/RenderField.jsx'
-const ElementsCombine = ({ field }) => {
-    const [checkedState, setCheckedState] = useState(false);
-    console.log(field)
+const ElementsCombine = ({ field, display }) => {
     return (
-        <div>
-            {field.display == 'inline' ?
-                <div  className='rowC'>
+        <div >
+
+            {display == 'inline' ?
+                <div className='rowC'>
                     {
                         field
                             .filter(({ field }) => field !== 'id')
                             .map(
-                                (field, index) =>
+                                (field) =>
                                     <div>
                                         <h3>{field.displayName}</h3>
                                         <RenderField field={field}></RenderField>
@@ -27,7 +24,6 @@ const ElementsCombine = ({ field }) => {
 
                     }
                 </div>
-
                 : <dev> {
                     field
                         .filter(({ field }) => field !== 'id')
@@ -42,6 +38,7 @@ const ElementsCombine = ({ field }) => {
                         )
                 }
                 </dev>
+
             }
         </div>
     );
