@@ -1,5 +1,5 @@
 
-import { SEVERITY_OPTIONS, GENDER, INTERVIEW_LOCATION, STATUS, TRIP_DURATION, HOTEL_OR_ADDRESS, TRIP_PAYER, CLOSENESS } from './enums'
+import { SEVERITY_OPTIONS, GENDER, INTERVIEW_LOCATION, STATUS, TRIP_DURATION, HOTEL_OR_ADDRESS, TRIP_PAYER, CLOSENESS, EXPENDED_CLOSENESS, GROUP_OR_ORGANIZATION } from './enums'
 
 export const FORM_FIELDS = [
     { field: 'id', displayName: 'מזהה משימה', type: 'text' },
@@ -95,9 +95,9 @@ export const FormFields = {
                     {
                         field: `trip'sPayerAddressSameToCustomer`, displayName: '?האם כתובת משלם הטיול איננה זהה לכתובת הלקוח ', type: 'Checkbox',
                         onMarkCheckbox: [
-                            { field: 'ApartmentStreet', displayName: 'רחוב', type: 'text' },
-                            { field: 'ApartmentNumber', displayName: 'מספר דירה', type: 'text' },
-                            { field: 'ApartmentCity', displayName: 'עיר', type: 'text' },
+                            { field: `trip'sPayerStreet`, displayName: 'רחוב', type: 'text' },
+                            { field: `trip'sPayerApartment`, displayName: 'מספר דירה', type: 'text' },
+                            { field: `trip'sPayerApartmentCity`, displayName: 'עיר', type: 'text' },
                             {
                                 field: `trip'sPayeroProvinces`, type: 'ElementsCombine', display: 'inline'
                                 , elementsList: [
@@ -127,9 +127,9 @@ export const FormFields = {
                     { field: `trip'sPayerOrganiztionName`, displayName: 'שם הארגון', type: 'text' },
                     { field: `trip'sPayerOrganiztionPhone`, displayName: 'מספר טלפון', type: 'text' },
                     { field: `trip'sPayerOrganiztionCloseness`, displayName: 'קשר אליך', type: 'text' },
-                    { field:  `trip'sPayerOrganiztionStreet`, displayName: 'רחוב', type: 'text' },
-                    { field:  `trip'sPayerOrganiztionApartment`, displayName: 'מספר דירה', type: 'text' },
-                    { field:  `trip'sPayerOrganiztionCity`, displayName: 'עיר', type: 'text' },
+                    { field: `trip'sPayerOrganiztionStreet`, displayName: 'רחוב', type: 'text' },
+                    { field: `trip'sPayerOrganiztionApartment`, displayName: 'מספר דירה', type: 'text' },
+                    { field: `trip'sPayerOrganiztionCity`, displayName: 'עיר', type: 'text' },
                     {
                         field: `trip'sPayeroOrganiztionProvinces`, type: 'ElementsCombine', display: 'inline'
                         , elementsList: [
@@ -151,12 +151,34 @@ export const FormFields = {
                         ]
                     },
                     { field: `trip'sPayeroOrganiztionCountry`, displayName: 'מדינה', type: 'searchBar' },
-                   
-                     
+
+
                 ]
 
             }
-        }
+        },
+        {
+            field: '', displayName: 'האם נוסעים איתך אנשים נוספים', type: 'Checkbox',
+            onMarkCheckbox: [
+                {
+                    field: '', displayName: '?האם נוסע מטעם קבוצה או ארגון', type: 'select', options: GROUP_OR_ORGANIZATION,
+                    onSelectOption: {
+                        'YES': [
+                            { field: '', displayName: 'שם הקבוצה/ארגון', type: 'text' }
+                        ],
+                        'NO': [
+                            //  field: 'hotelList', displayName: 'מלון', type: 'list', listOptions:
+                            { field: '', displayName: 'שם פרטי', type: 'text' },
+                            { field: '', displayName: 'שם משפחה', type: 'text' },
+                            { field: `trip'sPayerCloseness`, displayName: 'קרבה', type: 'select', options: EXPENDED_CLOSENESS },
+                        ]
+                    }
+                },
+
+
+
+            ]
+        },
     ],
 
     '3': [{ field: 'id', displayName: 'מזהה 3333333', type: 'text' },

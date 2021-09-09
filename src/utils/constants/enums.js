@@ -55,7 +55,21 @@ export const HOTEL_OR_ADDRESS =
         { value: 'RELATIVE', label: 'קרוב משפחה' },
         { value: 'FRIEND', label: 'חבר' },
         { value: 'OTHER', label: 'אחר' },
-
+    ]
+    export const EXPENDED_CLOSENESS =
+    [
+        { value: 'PARENT', label: 'הורה', },
+        { value: 'CHILD', label: 'ילד' },
+        { value: 'SPOUSE', label: 'בן/בת זוג' },
+        { value: 'RELATIVE', label: 'קרוב משפחה' },
+        { value: 'FRIEND', label: 'חבר' },
+        { value: 'COLLEAGUE', label: 'קולגה' },
+        { value: 'OTHER', label: 'אחר' },
+    ]
+    export const GROUP_OR_ORGANIZATION =
+    [
+        { value: 'YES', label: 'כן', },
+        { value: 'NO', label: 'לא' },
     ]
     
 export const FORM_MODES = {
