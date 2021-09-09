@@ -11,7 +11,6 @@ const DropDown = ({field}) => {
     const handleChange = (value) => {
               setSelectState(value.value);
     }
-    console.log('field',field)
     return (
         <div>
             <Select options={field.options}   onChange={value => handleChange(value)}

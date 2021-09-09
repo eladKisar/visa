@@ -3,30 +3,34 @@ import {
     TableCell,
     Checkbox,
 } from '@material-ui/core';
+import './ElementsCombine.css'
 import { useState } from "react";
 import RenderField from '../RenderField/RenderField.jsx'
-const CheckBox = ({ field }) => {
+const ElementsCombine = ({ field }) => {
     const [checkedState, setCheckedState] = useState(false);
+    console.log(field)
     return (
         <div>
-            <Checkbox id='CheckBox'
-                onClick={
-                    () => {
-                        setCheckedState(!checkedState);
+            {field.display == 'inline' ?
+                <div  className='rowC'>
+                    {
                         field
-                            .filter((field) => field?.disableElement !== undefined)
-                            .map((field) => {
-                                if (field.disableElement) {
-                                    document.getElementById(`${field.disableElement}`).disabled = !checkedState;
+                            .filter(({ field }) => field !== 'id')
+                            .map(
+                                (field, index) =>
+                                    <div>
+                                        <h3>{field.displayName}</h3>
+                                        <RenderField field={field}></RenderField>
 
-                                }
-                            })
-                    }}>
-            </Checkbox>
-            {checkedState && field ?
-                <dev> {
+                                    </div>
+                            )
+
+                    }
+                </div>
+
+                : <dev> {
                     field
-                        .filter((field) => field?.disableElement === undefined)
+                        .filter(({ field }) => field !== 'id')
                         .map(
                             (field, index) =>
                                 <TableRow style={{ width: '100%' }} key={index}>
@@ -38,8 +42,8 @@ const CheckBox = ({ field }) => {
                         )
                 }
                 </dev>
-                : <div />}
+            }
         </div>
     );
 }
-export default CheckBox
+export default ElementsCombine

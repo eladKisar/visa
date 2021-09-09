@@ -49,8 +49,8 @@ export const FormFields = {
     '2': [
         { field: 'flightDate', displayName: 'תאריך טיסה משוער', type: 'date' },
         {
-            field: 'tripDurationList', displayName: 'משך הטיול', type: 'list',
-            listOptions: [
+            field: 'tripDurationList', displayName: 'משך הטיול', type: 'ElementsCombine',display: 'grid',
+            elementsList: [
                 { field: 'tripDurationselect', displayName: 'הזנת מספר', type: 'select', options: TRIP_DURATION },
                 {
                     field: 'tripDurationNumber', displayName: 'בחירה', type: 'text',
@@ -98,6 +98,18 @@ export const FormFields = {
                             { field: 'ApartmentStreet', displayName: 'רחוב', type: 'text' },
                             { field: 'ApartmentNumber', displayName: 'מספר דירה', type: 'text' },
                             { field: 'ApartmentCity', displayName: 'עיר', type: 'text' },
+                            { field: `trip'sPayeroProvinces` , type: 'ElementsCombine', display: 'inline'
+                            ,elementsList:[
+                                { field: `trip'sPayeroProvincesCheckBox`, displayName: 'אינו חל', type: 'Checkbox',
+                                onMarkCheckbox:[{disableElement:`trip'sPayeroProvincesText`}] },
+                                { field: `trip'sPayeroProvincesText`, displayName: 'עיר/פרובינס', type: 'text' },
+                            ] },
+                            { field: `trip'sPayeroPostalCode` , type: 'ElementsCombine',display: 'inline',
+                            elementsList:[
+                                { field: `trip'sPayeroPostalCodeCheckBox`, displayName: 'אינו חל', type: 'Checkbox',
+                                onMarkCheckbox:[{disableElement:`trip'sPayeroPostalCodeText`}]  },
+                                { field: `trip'sPayeroPostalCodeText`, displayName: 'מיקוד', type: 'text' },
+                            ] },
                             { field: 'hotelCountry', displayName: 'מדינה', type: 'searchBar' }
 
                         ]
