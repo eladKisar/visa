@@ -14,12 +14,9 @@ const CheckBox = ({ field }) => {
                     () => {
                         setCheckedState(!checkedState);
                         field
-                            .filter((field) => field?.disableElement !== undefined)
+                            .filter((field) => field.disableElement !== undefined)
                             .map((field) => {
-                                if (field.disableElement) {
-                                    document.getElementById(`${field.disableElement}`).disabled = !checkedState;
-
-                                }
+                                    document.getElementById(`${field.disableElement}`).disabled = !checkedState
                             })
                     }}>
             </Checkbox>

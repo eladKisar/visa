@@ -49,7 +49,7 @@ export const FormFields = {
     '2': [
         { field: 'flightDate', displayName: 'תאריך טיסה משוער', type: 'date' },
         {
-            field: 'tripDurationList', displayName: 'משך הטיול', type: 'ElementsCombine',display: 'grid',
+            field: 'tripDurationList', displayName: 'משך הטיול', type: 'ElementsCombine', display: 'grid',
             elementsList: [
                 { field: 'tripDurationselect', displayName: 'הזנת מספר', type: 'select', options: TRIP_DURATION },
                 {
@@ -89,8 +89,8 @@ export const FormFields = {
                 'ANOTHER_PERSON': [
                     { field: `trip'sPayerLastName`, displayName: 'שם משפחה', type: 'text' },
                     { field: `trip'sPayerFirstName`, displayName: 'שם פרטי', type: 'text' },
-                    { field: `trip'sPayerPhonselectber`, displayName: 'מספר טלפון', type: 'text' },
-                    { field: `trip'sPayerMailAdress`, displayName: 'כתובת מייל', type: 'text' },
+                    { field: `trip'sPayerPhone`, displayName: 'מספר טלפון', type: 'text' },
+                    { field: `trip'sPayerMailAddress`, displayName: 'כתובת מייל', type: 'text' },
                     { field: `trip'sPayerCloseness`, displayName: 'קרבה', type: 'select', options: CLOSENESS },
                     {
                         field: `trip'sPayerAddressSameToCustomer`, displayName: '?האם כתובת משלם הטיול איננה זהה לכתובת הלקוח ', type: 'Checkbox',
@@ -98,23 +98,63 @@ export const FormFields = {
                             { field: 'ApartmentStreet', displayName: 'רחוב', type: 'text' },
                             { field: 'ApartmentNumber', displayName: 'מספר דירה', type: 'text' },
                             { field: 'ApartmentCity', displayName: 'עיר', type: 'text' },
-                            { field: `trip'sPayeroProvinces` , type: 'ElementsCombine', display: 'inline'
-                            ,elementsList:[
-                                { field: `trip'sPayeroProvincesCheckBox`, displayName: 'אינו חל', type: 'Checkbox',
-                                onMarkCheckbox:[{disableElement:`trip'sPayeroProvincesText`}] },
-                                { field: `trip'sPayeroProvincesText`, displayName: 'עיר/פרובינס', type: 'text' },
-                            ] },
-                            { field: `trip'sPayeroPostalCode` , type: 'ElementsCombine',display: 'inline',
-                            elementsList:[
-                                { field: `trip'sPayeroPostalCodeCheckBox`, displayName: 'אינו חל', type: 'Checkbox',
-                                onMarkCheckbox:[{disableElement:`trip'sPayeroPostalCodeText`}]  },
-                                { field: `trip'sPayeroPostalCodeText`, displayName: 'מיקוד', type: 'text' },
-                            ] },
+                            {
+                                field: `trip'sPayeroProvinces`, type: 'ElementsCombine', display: 'inline'
+                                , elementsList: [
+                                    {
+                                        field: `trip'sPayeroProvincesCheckBox`, displayName: 'אינו חל', type: 'Checkbox',
+                                        onMarkCheckbox: [{ disableElement: `trip'sPayeroProvincesText` }]
+                                    },
+                                    { field: `trip'sPayeroProvincesText`, displayName: 'עיר/פרובינס', type: 'text' },
+                                ]
+                            },
+                            {
+                                field: `trip'sPayeroPostalCode`, type: 'ElementsCombine', display: 'inline',
+                                elementsList: [
+                                    {
+                                        field: `trip'sPayeroPostalCodeCheckBox`, displayName: 'אינו חל', type: 'Checkbox',
+                                        onMarkCheckbox: [{ disableElement: `trip'sPayeroPostalCodeText` }]
+                                    },
+                                    { field: `trip'sPayeroPostalCodeText`, displayName: 'מיקוד', type: 'text' },
+                                ]
+                            },
                             { field: 'hotelCountry', displayName: 'מדינה', type: 'searchBar' }
 
                         ]
                     }
+                ],
+                'ANOTHER_COMPANY_OR_ORGANIZTION': [
+                    { field: `trip'sPayerOrganiztionName`, displayName: 'שם הארגון', type: 'text' },
+                    { field: `trip'sPayerOrganiztionPhone`, displayName: 'מספר טלפון', type: 'text' },
+                    { field: `trip'sPayerOrganiztionCloseness`, displayName: 'קשר אליך', type: 'text' },
+                    { field:  `trip'sPayerOrganiztionStreet`, displayName: 'רחוב', type: 'text' },
+                    { field:  `trip'sPayerOrganiztionApartment`, displayName: 'מספר דירה', type: 'text' },
+                    { field:  `trip'sPayerOrganiztionCity`, displayName: 'עיר', type: 'text' },
+                    {
+                        field: `trip'sPayeroOrganiztionProvinces`, type: 'ElementsCombine', display: 'inline'
+                        , elementsList: [
+                            {
+                                field: `trip'sPayeroOrganiztionProvincesCheckBox`, displayName: 'אינו חל', type: 'Checkbox',
+                                onMarkCheckbox: [{ disableElement: `trip'sPayeroProvincesText` }]
+                            },
+                            { field: `trip'sPayeroOrganiztionProvincesText`, displayName: 'עיר/פרובינס', type: 'text' },
+                        ]
+                    },
+                    {
+                        field: `trip'sPayeroOrganiztionPostalCode`, type: 'ElementsCombine', display: 'inline',
+                        elementsList: [
+                            {
+                                field: `trip'sPayeroOrganiztionPostalCodeCheckBox`, displayName: 'אינו חל', type: 'Checkbox',
+                                onMarkCheckbox: [{ disableElement: `trip'sPayeroPostalCodeText` }]
+                            },
+                            { field: `trip'sPayeroOrganiztionPostalCodeText`, displayName: 'מיקוד', type: 'text' },
+                        ]
+                    },
+                    { field: `trip'sPayeroOrganiztionCountry`, displayName: 'מדינה', type: 'searchBar' },
+                   
+                     
                 ]
+
             }
         }
     ],
