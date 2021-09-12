@@ -65,17 +65,13 @@ export const FormFields = {
             lessThan24HoursTrip: false,
             onSelectOption: {
                 'ADDRESS': [
-                    // field: 'ApartmentList', displayName: 'כתובת', type: 'list', listOptions: [
                     { field: 'ApartmentStreet', displayName: 'רחוב', type: 'text' },
                     { field: 'ApartmentNumber', displayName: 'מספר דירה', type: 'text' },
                     { field: 'ApartmentCity', displayName: 'עיר', type: 'text' },
                     { field: 'ApartmentCountry', displayName: 'מדינה', type: 'searchBar' },
                     { field: 'ApartmentpostalCode', displayName: 'מיקוד', type: 'text' },
-
-                    //  ]
                 ],
                 'HOTEL': [
-                    //  field: 'hotelList', displayName: 'מלון', type: 'list', listOptions:
                     { field: 'hotel', displayName: 'מספר דירה', type: 'text' },
                     { field: 'HotelCity', displayName: 'עיר', type: 'text' },
                     { field: 'hotelCountry', displayName: 'מדינה', type: 'searchBar' }
@@ -167,7 +163,6 @@ export const FormFields = {
                             { field: '', displayName: 'שם הקבוצה/ארגון', type: 'text' }
                         ],
                         'NO': [
-                            //  field: 'hotelList', displayName: 'מלון', type: 'list', listOptions:
                             { field: '', displayName: 'שם פרטי', type: 'text' },
                             { field: '', displayName: 'שם משפחה', type: 'text' },
                             { field: `trip'sPayerCloseness`, displayName: 'קרבה', type: 'select', options: EXPENDED_CLOSENESS },
@@ -200,3 +195,4 @@ export const FormFields = {
     { field: 'priority', displayName: '44444444444', type: 'select', options: SEVERITY_OPTIONS }]
 
 };
+ 
