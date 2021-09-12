@@ -5,24 +5,30 @@ import {
 } from '@material-ui/core';
 import { useState } from "react";
 import RenderField from '../RenderField/RenderField.jsx'
-const CheckBox = ({ field }) => {
+const CheckBox = ({ onMarkChecboxFields }) => {
     const [checkedState, setCheckedState] = useState(false);
+
+    
     return (
         <div>
             <Checkbox id='CheckBox'
                 onClick={
                     () => {
+                        console.log('onMarkChecboxFields',onMarkChecboxFields)
                         setCheckedState(!checkedState);
-                        field
+                        if(onMarkChecboxFields){
+                            onMarkChecboxFields
                             .filter((field) => field.disableElement !== undefined)
                             .map((field) => {
                                     document.getElementById(`${field.disableElement}`).disabled = !checkedState
                             })
+                        }
+                     
                     }}>
             </Checkbox>
-            {checkedState && field ?
+            {checkedState && onMarkChecboxFields ?
                 <dev> {
-                    field
+                    onMarkChecboxFields
                         .filter((field) => field?.disableElement === undefined)
                         .map(
                             (field, index) =>

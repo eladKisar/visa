@@ -29,7 +29,8 @@ export const TRIP_DURATION =
     [
         { value: 'DAYS', label: 'ימים', },
         { value: 'WEEKS', label: 'שבועות' },
-        { value: 'YESRA', label: 'שנים', },
+        { value: 'MONTHS', label: 'חודשים'},
+        { value: 'YEARS', label: 'שנים', },
         { value: 'LASS_THAN_24_HOURS', label: 'פחות מ 24 שעות' },
     ]
 export const HOTEL_OR_ADDRESS =
@@ -44,8 +45,6 @@ export const HOTEL_OR_ADDRESS =
         { value: 'USA_EMPLOYSER', label: 'מעסיק בארה"ב' },
         { value: 'ANOTHER_COMPANY_OR_ORGANIZTION', label: 'חברה או ארגון אחר' },
         { value: 'ANOTHER_PERSON', label: 'אדם אחר' },
-
-
     ]
     export const CLOSENESS =
     [

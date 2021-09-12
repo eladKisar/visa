@@ -11,9 +11,6 @@ import CheckBox from '../CheckBox/CheckBox.jsx';
 import ElementsCombine from '../ElementsCombine/ElementsCombine.jsx'
 import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 const RenderField = ({ field }) => {
-    console.log('field.type', field.type)
-    console.log('field.field', field.field)
-
     switch (field.type) {
         case 'select':
             return (
@@ -42,10 +39,9 @@ const RenderField = ({ field }) => {
                 </SearchBar>
             );
         case 'Checkbox':
-            console.log('99999999999999')
             return (
                 <div>
-                    <CheckBox field={field.onMarkCheckbox}></CheckBox>
+                    <CheckBox onMarkChecboxFields={field.onMarkCheckbox}></CheckBox>
                 </div>
             );
 
@@ -55,11 +51,23 @@ const RenderField = ({ field }) => {
 
                 </ElementsCombine>
             )
+        case 'Number':
+            return (<input type="number" min="1900" max="2099" step="1" value="1900" />
+            )
+        case 'Textarea':
+            return (<textarea
+                id={field.field}
+                placeHolder={field.placeHolder || ''}
+                dir="rtl"
+                value={''}
+                onChange={() => { }}
+            />)
         default:
             return <input
                 id={field.field}
                 dir="rtl"
                 value={''}
+                maxlength={field.maxlength || "2000"}
                 onChange={() => { }}
             />
     }
