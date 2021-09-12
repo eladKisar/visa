@@ -231,19 +231,26 @@ export const FormFields = {
                     field: 'ESTARequestDeniedCheckbox', displayName: 'ESTAהאם סורבה בקשתך ל', type: 'Checkbox',
                     onMarkCheckbox: [{ field: 'ESTARequestDeniedCheckBoxText', displayName: 'הסבר', type: 'Textarea' }]
                 },
-                // {
-                //     field: 'HoldAnSSNCheckbox', displayName: 'SSN האם אתה מחזיק', type: 'Checkbox',
-                //     onMarkCheckbox: []
-                // },
-                // { field: `HoldAnSSNText1`, displayName: 'מספר ויזה לארה"ב', type: 'text' },
-                // { field: `HoldAnSSNText1`, displayName: 'מספר ויזה לארה"ב', type: 'text' },
-                // { field: `HoldAnSSNText1`, displayName: 'מספר ויזה לארה"ב', type: 'text' },
+                {
+                    field: `trip'sPayeroProvinces`, type: 'ElementsCombine', display: 'inline'
+                    , elementsList: [
+                        {
+                            field: 'HoldAnSSNCheckbox', displayName: ' האם אתה מחזיק SSN', type: 'Checkbox',
+                            onMarkCheckbox: []
+                        },
+                        { field: `HoldAnSSNText1`, displayName: '',maxlength:"4", type: 'text' },
+                        { field: `HoldAnSSNText2`, displayName: '',maxlength:"2", type: 'text' },
+                        { field: `HoldAnSSNText3`, displayName: '',maxlength:"3", type: 'text' },
+                    ]
+                },
+               
+              
                 {
                     field: `HeldAmericanTaxpayerNumberCombine`, type: 'ElementsCombine', display: 'inline'
                     , elementsList: [
                         {
                             field: 'HeldAmericanTaxpayerNumberCheckbox', displayName: 'האם חזקת מספר משלם מס אמריקאי', type: 'Checkbox',
-                            onMarkCheckbox: [{ disableElement: `HeldAmericanTaxpayerNumberText` }]
+                            onMarkCheckbox: [{ disableElement: 'HeldAmericanTaxpayerNumberText' }]
                         },
                         { field: `HeldAmericanTaxpayerNumberText`, displayName: 'הסבר', type: 'text' },
                     ]

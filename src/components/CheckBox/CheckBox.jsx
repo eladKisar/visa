@@ -14,13 +14,12 @@ const CheckBox = ({ onMarkChecboxFields }) => {
             <Checkbox id='CheckBox'
                 onClick={
                     () => {
-                        console.log('onMarkChecboxFields',onMarkChecboxFields)
-                        setCheckedState(!checkedState);
+                         setCheckedState(!checkedState);
                         if(onMarkChecboxFields){
                             onMarkChecboxFields
                             .filter((field) => field.disableElement !== undefined)
                             .map((field) => {
-                                    document.getElementById(`${field.disableElement}`).disabled = !checkedState
+                                     document.getElementById(`${field.disableElement}`).disabled = !checkedState
                             })
                         }
                      

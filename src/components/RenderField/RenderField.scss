@@ -1,0 +1,37 @@
+#HoldAnSSNText1{width:35px;   margin-left: 3px;
+    margin-right: 3px;}
+#HoldAnSSNText2{width:20px;  margin-left: 3px;
+    margin-right: 3px;}
+#HoldAnSSNText3{width:25px;  margin-left: 3px;
+    margin-right: 3px;}
+
+#required::after {
+    content:" *";
+    color: red;
+  }
+#HoldAnSSNText1::after{
+    content: '-';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: red;
+}
+#HoldAnSSNText2::after{
+    content: '-';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: red;
+}#HoldAnSSNText3::after{
+    content: '-';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: red;
+}

@@ -1,9 +1,4 @@
-import {
-    TableRow,
-    TableCell,
-    TextField,
-} from '@material-ui/core';
-
+import './RenderField.scss'
 import DropDown from '../DropDown/DropDown.jsx';
 import DateUtils from "@date-io/moment";
 import SearchBar from '../SearchBar/SearchBar.jsx';
@@ -66,7 +61,7 @@ const RenderField = ({ field }) => {
             return <input
                 id={field.field}
                 dir="rtl"
-                value={''}
+               // value={''}
                 maxlength={field.maxlength || "2000"}
                 onChange={() => { }}
             />
