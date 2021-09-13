@@ -20,17 +20,18 @@ class SearchBar extends React.Component {
 
   handlePlaceChanged(){
     const place = this.autocomplete.getPlace();
-  //  this.props.onPlaceLoaded(place);
-  }
+    const value = place?.formatted_address
+    this.props.handleChange(value,this.props.field)  }
 
 
 
   render() {
     return (
         <input ref={this.autocompleteInput}  className="autocomplete" placeholder="הקלד כתובת"
-         type="text"></input>
+        onChange={value => this.handlePlaceChanged()} type="text"></input>
     );
   }
 }
+//onChange={value => this.props.handleChange(value,this.props.field)} type="text"></input>
 
 export default SearchBar;

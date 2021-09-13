@@ -18,14 +18,14 @@ export const setForm = (form) => {
     }
 }
 
-export const addField = (fieldName, isRequired, defaultValue) => {
-    return dispatch => {
+export const addField = (fieldName,value) => {
+    console.log('addfield')
+     return dispatch => {
         dispatch({
             type: ADD_FIELD,
             payload: {
                 fieldName,
-                isRequired,
-                defaultValue,
+                value,
             }
         })
     }

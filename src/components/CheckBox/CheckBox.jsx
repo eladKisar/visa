@@ -8,7 +8,7 @@ import RenderField from '../RenderField/RenderField.jsx'
 const CheckBox = ({ onMarkChecboxFields }) => {
     const [checkedState, setCheckedState] = useState(false);
 
-    
+    console.log('onMarkChecboxFields',onMarkChecboxFields)
     return (
         <div>
             <Checkbox id='CheckBox'
