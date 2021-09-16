@@ -27,7 +27,7 @@ class RenderField extends React.Component {
         }
     }
      handleChangeForm = (value, field) => {
-        this.props.addField(field, value);
+        this.props.addField(field.fieldName, value);
     }
     
     render(){

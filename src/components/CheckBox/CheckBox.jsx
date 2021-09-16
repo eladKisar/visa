@@ -4,7 +4,8 @@ import {
     Checkbox,
 } from '@material-ui/core';
 import { useState } from "react";
-import RenderField from '../RenderField/RenderField.jsx'
+import CheckBoxFields from './CheckBoxFields/CheckBoxFields.jsx';
+import RenderField from '../RenderField/RenderField.jsx';
 const CheckBox = ({ onMarkChecboxFields }) => {
     const [checkedState, setCheckedState] = useState(false);
 
@@ -27,17 +28,7 @@ const CheckBox = ({ onMarkChecboxFields }) => {
             </Checkbox>
             {checkedState && onMarkChecboxFields ?
                 <dev> {
-                    onMarkChecboxFields
-                        .filter((field) => field?.disableElement === undefined)
-                        .map(
-                            (field, index) =>
-                                <TableRow style={{ width: '100%' }} key={index}>
-                                    <TableCell width="50%" align="right">
-                                        <RenderField field={field}></RenderField>
-                                    </TableCell>
-                                    <TableCell width="50%" align="right">{field.displayName}</TableCell>
-                                </TableRow>
-                        )
+                    <CheckBoxFields ChecboxFields={onMarkChecboxFields}/>                  
                 }
                 </dev>
                 : <div />}

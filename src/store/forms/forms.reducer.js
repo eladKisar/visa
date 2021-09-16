@@ -20,7 +20,7 @@ const formReducer = (state = initialState, action) => {
                 fieldName,
                   value,
             } = payload;
-            nissoi[fieldName.fieldName] = { value: value }
+            nissoi[fieldName] = { value: value }
             return {
                 ...state,
                 nissoi: {

@@ -5,20 +5,19 @@ import {
 import React, { useState, useEffect } from "react";
 import RenderField from '../RenderField/RenderField.jsx'
 import Select from 'react-select'
-const DropDown = ({field,handleSelectChange}) => {
+const DropDown = ({ field, handleSelectChange }) => {
     const [selectState, setSelectState] = useState();
 
-     const handleChange = (valueObj, field) => {
+    const handleChange = (valueObj, field) => {
         const value = valueObj.value;
         setSelectState(value);
-        handleSelectChange(value,field)
+        handleSelectChange(value, field)
     }
     return (
         <div>
-            <Select options={field.options}   onChange={value => handleChange(value,field)}
->
+            <Select options={field.options} onChange={value => handleChange(value, field)}>
             </Select>
-            { field.onSelectOption && selectState && field.onSelectOption[selectState]?
+            {field.onSelectOption && selectState && field.onSelectOption[selectState] ?
                 <dev> {
                     field.onSelectOption[selectState]
                         .filter(({ field }) => field !== 'id')

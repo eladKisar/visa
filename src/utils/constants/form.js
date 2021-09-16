@@ -154,18 +154,18 @@ export const FormFields = {
             }
         },
         {
-            fieldName: '', displayName: 'האם נוסעים איתך אנשים נוספים', type: 'Checkbox',
+            fieldName: 'TravleWithMorePeople', displayName: 'האם נוסעים איתך אנשים נוספים', type: 'Checkbox',
             onMarkCheckbox: [
                 {
-                    fieldName: '', displayName: '?האם נוסע מטעם קבוצה או ארגון', type: 'select', options: GROUP_OR_ORGANIZATION,
+                    fieldName: 'groupOrOrganzizationTravel', displayName: '?האם נוסע מטעם קבוצה או ארגון', type: 'select', options: GROUP_OR_ORGANIZATION,
                     onSelectOption: {
                         'YES': [
-                            { fieldName: '', displayName: 'שם הקבוצה/ארגון', type: 'text' }
+                            { fieldName: 'groupOrOrganzizationTravelName', displayName: 'שם הקבוצה/ארגון', type: 'text' }
                         ],
                         'NO': [
-                            { fieldName: '', displayName: 'שם פרטי', type: 'text' },
-                            { fieldName: '', displayName: 'שם משפחה', type: 'text' },
-                            { fieldName: `trip'sPayerCloseness`, displayName: 'קרבה', type: 'select', options: EXPENDED_CLOSENESS },
+                            { fieldName: 'TravleWithAnotherPeopleName', displayName: 'שם פרטי', type: 'text' },
+                            { fieldName: 'TravleWithAnotherPeopleFamily', displayName: 'שם משפחה', type: 'text' },
+                            { fieldName: `TravleWithAnotherPeopleClosnes`, displayName: 'קרבה', type: 'select', options: EXPENDED_CLOSENESS },
                         ]
                     }
                 },
