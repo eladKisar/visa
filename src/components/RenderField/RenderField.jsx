@@ -65,7 +65,7 @@ class RenderField extends React.Component {
         case 'Checkbox':
             return (
                 <div>
-                    <CheckBox onMarkChecboxFields={field.onMarkCheckbox} ></CheckBox>
+                    <CheckBox onMarkChecboxFields={field.onMarkCheckbox} fieldName={field.fieldName} ></CheckBox>
                 </div>
             );
 

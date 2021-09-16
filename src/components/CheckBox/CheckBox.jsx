@@ -6,8 +6,12 @@ import {
 import { useState } from "react";
 import CheckBoxFields from './CheckBoxFields/CheckBoxFields.jsx';
 import RenderField from '../RenderField/RenderField.jsx';
-const CheckBox = ({ onMarkChecboxFields }) => {
+
+
+const CheckBox = ({ onMarkChecboxFields, fieldName}) => {
     const [checkedState, setCheckedState] = useState(false);
+
+
 
     console.log('onMarkChecboxFields',onMarkChecboxFields)
     return (
@@ -28,7 +32,7 @@ const CheckBox = ({ onMarkChecboxFields }) => {
             </Checkbox>
             {checkedState && onMarkChecboxFields ?
                 <dev> {
-                    <CheckBoxFields ChecboxFields={onMarkChecboxFields}/>                  
+                    <CheckBoxFields ChecboxFields={onMarkChecboxFields} fieldName = {fieldName}/>                  
                 }
                 </dev>
                 : <div />}

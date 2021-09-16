@@ -16,8 +16,9 @@ import DateUtils from "@date-io/moment";
 import SearchBar from '../../SearchBar/SearchBar.jsx';
 import CheckBox from '../CheckBox.jsx';
 import ElementsCombine from '../../ElementsCombine/ElementsCombine.jsx'
-import {  MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DatePicker from "react-date-picker";
+import { CompassCalibrationOutlined } from '@material-ui/icons';
 
 
 const mapStateToProps = (state) => ({
@@ -30,31 +31,51 @@ const mapDispatchToProps = (dispatch) => ({
 class CheckBoxFields extends React.Component {
     constructor(props) {
         super(props)
-        this.state ={
-            values:{}
+        this.state = {
+            values: []
         }
 
-       }
-     handleChangeForm = (value, field) => {
-        this.state.values[field.fieldName] = { valuess: value }
-        console.log('CheckBoxFields-values', this.state.values)
-
-        this.props.addField('yes its works',    this.state.values);
     }
-    
-     renderField = ( field) => {
+    handleChangeForm = (value, field) => {
+        //      var x = this.state.values
+        //        x.push(value)
+
+        //this.setState({values:x})
+        var nisooi = {};
+        var y = this.state.values
+        if (this.props.currentForm['foreignCitizenship'].value) {
+            console.log('yessssss', this.props.currentForm['foreignCitizenship'].value)
+         nisooi = this.props.currentForm['foreignCitizenship'].value;
+            nisooi[field.fieldName] = { valuess: value }
+            console.log('nisoooooi-values', nisooi)
+
+            console.log('1111111111-values', this.props.currentForm['foreignCitizenship'].value)
+
+        } else {
+            console.log('noooooooooo')
+            nisooi[field.fieldName] = { valuess: value }
+
+        }
+        y['foreignCitizenship'] = { valuess: value }
+        console.log('99999999', this.state.values)
+
+
+        this.props.addField('foreignCitizenship', nisooi);
+    }
+
+    renderField = (field) => {
         switch (field.type) {
             case 'select':
                 return (
                     <DropDown field={field} handleSelectChange={this.handleChangeForm}>
-    
+
                     </DropDown>
                 );
             case 'date':
                 return (
                     <MuiPickersUtilsProvider utils={DateUtils}>
-                          <DatePicker value={new Date()}
-                          />
+                        <DatePicker value={new Date()}
+                        />
                         {/* <DateTimePicker
                             autoOk
                             ampm={false}
@@ -69,7 +90,7 @@ class CheckBoxFields extends React.Component {
             case 'searchBar':
                 return (
                     <SearchBar field={field} handleChange={this.handleChangeForm}>
-    
+
                     </SearchBar>
                 );
             case 'Checkbox':
@@ -78,23 +99,23 @@ class CheckBoxFields extends React.Component {
                         <CheckBox onMarkChecboxFields={field.onMarkCheckbox} ></CheckBox>
                     </div>
                 );
-    
+
             case 'ElementsCombine':
                 return (
                     <ElementsCombine display={field.display} field={field.elementsList}>
-    
+
                     </ElementsCombine>
                 )
             case 'Number':
-                return (<input type="number" min="1900" max="2099" step="1" placeHolder="1900" 
-                onChange={event => this.handleChangeForm(event.target.value, field)}/>
+                return (<input type="number" min="1900" max="2099" step="1" placeHolder="1900"
+                    onChange={event => this.handleChangeForm(event.target.value, field)} />
                 )
             case 'Textarea':
                 return (<textarea
                     id={field.field}
                     placeHolder={field.placeHolder || ''}
                     dir="rtl"
-                   // value={''}
+                    // value={''}
                     onChange={event => this.handleChangeForm(event.target.value, field)}
                 />)
             default:
@@ -106,9 +127,9 @@ class CheckBoxFields extends React.Component {
                     onChange={event => this.handleChangeForm(event.target.value, field)}
                 />
         }
-     }
+    }
     render() {
-     return   <div>
+        return <div>
             <dev> {
                 this.props.ChecboxFields
                     .filter((field) => field?.disableElement === undefined)
@@ -116,7 +137,7 @@ class CheckBoxFields extends React.Component {
                         (field, index) =>
                             <TableRow style={{ width: '100%' }} key={index}>
                                 <TableCell width="50%" align="right">
-                                {this.renderField(field)}
+                                    {this.renderField(field)}
                                 </TableCell>
                                 <TableCell width="50%" align="right">{field.displayName}</TableCell>
                             </TableRow>
@@ -125,7 +146,7 @@ class CheckBoxFields extends React.Component {
             </dev>
 
         </div>
-        };
+    };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CheckBoxFields);
 
