@@ -29,9 +29,13 @@ export const FormFields = {
         {
             fieldName: 'foreignCitizenship', displayName: 'אזרחות זרה', type: 'Checkbox',
             onMarkCheckbox: [
-                { fieldName: 'foreignCitizenshipCountry', displayName: 'איזה מדינה', type: 'searchBar' },
+                {
+                    fieldName: 'foreignCitizenshipCountry', displayName: 'איזה מדינה', type: 'searchBar',
+                    parentsField: ['foreignCitizenship'],
+                },
                 {
                     fieldName: 'PassportOfForeignCitizenship', displayName: 'האם קיים דרכון של המדינה', type: 'Checkbox',
+                    parentsField: ['foreignCitizenship'],
                     onMarkCheckbox: [{ fieldName: 'ForeignPassportNumber', displayName: 'מספר דרכון', type: 'text' }]
                 }
 
@@ -238,13 +242,13 @@ export const FormFields = {
                             fieldName: 'HoldAnSSNCheckbox', displayName: ' האם אתה מחזיק SSN', type: 'Checkbox',
                             onMarkCheckbox: []
                         },
-                        { fieldName: `HoldAnSSNText1`, displayName: '',maxlength:"4", type: 'text' },
-                        { fieldName: `HoldAnSSNText2`, displayName: '',maxlength:"2", type: 'text' },
-                        { fieldName: `HoldAnSSNText3`, displayName: '',maxlength:"3", type: 'text' },
+                        { fieldName: `HoldAnSSNText1`, displayName: '', maxlength: "4", type: 'text' },
+                        { fieldName: `HoldAnSSNText2`, displayName: '', maxlength: "2", type: 'text' },
+                        { fieldName: `HoldAnSSNText3`, displayName: '', maxlength: "3", type: 'text' },
                     ]
                 },
-               
-              
+
+
                 {
                     fieldName: `HeldAmericanTaxpayerNumberCombine`, type: 'ElementsCombine', display: 'inline'
                     , elementsList: [
@@ -261,10 +265,10 @@ export const FormFields = {
                         { fieldName: 'LostPassportNumberText', displayName: 'מספר דרכון', type: 'text' },
                         { fieldName: 'CountryIssuedPassportSearch', displayName: 'מדינה שהנפיקה את הדרכון', type: 'searchBar' },
                         { fieldName: 'LostPassportExplanationText', displayName: 'הסבר', type: 'Textarea' }
-        
+
                     ]
                 },
-             
+
             ]
         },
     ],

@@ -41,25 +41,23 @@ class CheckBoxFields extends React.Component {
         //        x.push(value)
 
         //this.setState({values:x})
-        var nisooi = {};
-        var y = this.state.values
-        if (this.props.currentForm['foreignCitizenship'].value) {
+       var nisooi = {};
+     var y = this.state.values
+        if (this.props.currentForm['foreignCitizenship']?.value) {
             console.log('yessssss', this.props.currentForm['foreignCitizenship'].value)
          nisooi = this.props.currentForm['foreignCitizenship'].value;
             nisooi[field.fieldName] = { valuess: value }
-            console.log('nisoooooi-values', nisooi)
+            console.log('nisoooooi-this.props.fieldName', this.props.fieldName)
 
-            console.log('1111111111-values', this.props.currentForm['foreignCitizenship'].value)
+       //     console.log('1111111111-values', this.props.currentForm['foreignCitizenship'].value)
 
         } else {
-            console.log('noooooooooo')
+       //     console.log('noooooooooo')
             nisooi[field.fieldName] = { valuess: value }
 
         }
-        y['foreignCitizenship'] = { valuess: value }
-        console.log('99999999', this.state.values)
-
-
+      //  y['foreignCitizenship'] = { valuess: value }
+      //  console.log('99999999', this.state.values)
         this.props.addField('foreignCitizenship', nisooi);
     }
 

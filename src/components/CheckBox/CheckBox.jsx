@@ -8,31 +8,45 @@ import CheckBoxFields from './CheckBoxFields/CheckBoxFields.jsx';
 import RenderField from '../RenderField/RenderField.jsx';
 
 
-const CheckBox = ({ onMarkChecboxFields, fieldName}) => {
+const CheckBox = ({ onMarkChecboxFields, field,handleChange }) => {
     const [checkedState, setCheckedState] = useState(false);
 
 
 
-    console.log('onMarkChecboxFields',onMarkChecboxFields)
+    console.log('onMarkChecboxFields', onMarkChecboxFields)
+    // console.log('field', field)
+
     return (
         <div>
             <Checkbox id='CheckBox'
                 onClick={
                     () => {
-                         setCheckedState(!checkedState);
-                        if(onMarkChecboxFields){
+                        setCheckedState(!checkedState);
+                        if (onMarkChecboxFields) {
                             onMarkChecboxFields
-                            .filter((field) => field.disableElement !== undefined)
-                            .map((field) => {
-                                     document.getElementById(`${field.disableElement}`).disabled = !checkedState
-                            })
+                                .filter((field) => field.disableElement !== undefined)
+                                .map((field) => {
+                                    document.getElementById(`${field.disableElement}`).disabled = !checkedState
+                                })
                         }
-                     
+                      handleChange(!checkedState, field);
+
                     }}>
             </Checkbox>
             {checkedState && onMarkChecboxFields ?
                 <dev> {
-                    <CheckBoxFields ChecboxFields={onMarkChecboxFields} fieldName = {fieldName}/>                  
+                    onMarkChecboxFields
+                        .filter((field) => field?.disableElement === undefined)
+                        .map(
+                            (field, index) =>
+                                <TableRow style={{ width: '100%' }} key={index}>
+                                    <TableCell width="50%" align="right">
+                                        <RenderField field={field}></RenderField>
+                                    </TableCell>
+                                    <TableCell width="50%" align="right">{field.displayName}</TableCell>
+                                </TableRow>
+                        )
+                    // <CheckBoxFields ChecboxFields={onMarkChecboxFields} fieldName = {fieldName}/>                  
                 }
                 </dev>
                 : <div />}
