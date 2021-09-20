@@ -31,12 +31,15 @@ export const FormFields = {
             onMarkCheckbox: [
                 {
                     fieldName: 'foreignCitizenshipCountry', displayName: 'איזה מדינה', type: 'searchBar',
-                    parentsField: ['foreignCitizenship'],
+                    parentsFieldName: ['foreignCitizenship'],
                 },
                 {
                     fieldName: 'PassportOfForeignCitizenship', displayName: 'האם קיים דרכון של המדינה', type: 'Checkbox',
-                    parentsField: ['foreignCitizenship'],
-                    onMarkCheckbox: [{ fieldName: 'ForeignPassportNumber', displayName: 'מספר דרכון', type: 'text' }]
+                    parentsFieldName: ['foreignCitizenship'],
+                    onMarkCheckbox: [{
+                        fieldName: 'ForeignPassportNumber', displayName: 'מספר דרכון', type: 'text',
+                        parentsFieldName: ['foreignCitizenship', 'PassportOfForeignCitizenship'],
+                    }]
                 }
 
             ]

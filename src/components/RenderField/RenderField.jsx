@@ -9,6 +9,7 @@ import { addField } from 'store/forms/forms.actions';
 import './RenderField.scss'
 import React from 'react';
 import DatePicker from "react-date-picker";
+import { ContactSupportTwoTone } from '@material-ui/icons';
 
 const mapStateToProps = (state) => ({
     currentForm: state.forms.nissoi,
@@ -27,48 +28,51 @@ class RenderField extends React.Component {
         }
     }
 
-    containsObject = (list, obj) => {
+    listContainsObject = (list, obj) => {
         return list.findIndex(elem => elem.fieldName === obj.fieldName)
     }
 
-    handleCheckBox = (value,field) => {
-            if (value) {
-                if (field.parentsField) {
-                    let parentsDictValue = this.props.currentForm[field.parentsField[0]].value;
-                    const obj = { fieldName: field.fieldName, value: [] }
-                    const index = this.containsObject(parentsDictValue, obj);
-                    if (index > -1) {
-                        parentsDictValue[index].value = value;
-                    } else {
-                        parentsDictValue.push(obj)
-                    }
-                }
-                this.props.addField(field.fieldName, []);
-
+    handleCheckBox = (value, field) => {
+        if (value) {
+            const obj = { fieldName: field.fieldName, value: value, parentsFieldName: field.parentsFieldName }
+            let CheckBoxesChilds = this.props.currentForm['CheckBoxes']?.value;
+            if (CheckBoxesChilds) {
+                CheckBoxesChilds.push(obj)
+            } else {
+                this.props.addField('CheckBoxes', [obj]);
             }
+        }else{
+            let CheckBoxesChilds = this.props.currentForm['CheckBoxes']?.value;
+            CheckBoxesChilds.filter(obj => {
+                return obj.parentsFieldName?.indexOf(field.fieldName)>-1
+            });
+            console.log('CheckBoxesChilds',CheckBoxesChilds);
+
+           // CheckBoxesChilds = xxx;
+            // CheckBoxesChilds.forEach(obj => {
+            //     if(obj.parentField.include(field.fieldName)){
+
+            //     }
+            // });
+        }
     }
     handleChangeForm = (value, field) => {
-        console.log('handleChangeForm - value', value)
-         console.log('handleChangeForm - field', field)
+        if (field.parentsFieldName === undefined) {
+            this.props.addField(field.fieldName, value);
+        } else {
+            let CheckBoxesChilds = this.props.currentForm['CheckBoxes'].value;
+            const obj = { fieldName: field.fieldName, value: value, parentsFieldName: field.parentsFieldName }
+            const index = this.listContainsObject(CheckBoxesChilds, obj);
 
-     
-            if (field.parentsField === undefined) {
-                this.props.addField(field.fieldName, value);
+            if (index > -1) {
+                CheckBoxesChilds[index].value = value;
             } else {
-                let parentsDictValue = this.props.currentForm[field.parentsField[0]].value;
-                const obj = { fieldName: field.fieldName, value: value }
-                const index = this.containsObject(parentsDictValue, obj);
-                if (index > -1) {
-                    parentsDictValue[index].value = value;
-                } else {
-                    parentsDictValue.push(obj)
-                }
-                this.props.addField(field.fieldName, value);
-
-
+                CheckBoxesChilds.push(obj)
             }
-            // 
-       
+
+
+        }
+
     }
 
     render() {
