@@ -5,7 +5,7 @@ import SearchBar from '../SearchBar/SearchBar.jsx';
 import CheckBox from '../CheckBox/CheckBox.jsx';
 import ElementsCombine from '../ElementsCombine/ElementsCombine.jsx'
 import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { addField } from 'store/forms/forms.actions';
+import { addField,removeField } from 'store/forms/forms.actions';
 import './RenderField.scss'
 import React from 'react';
 import DatePicker from "react-date-picker";
@@ -17,70 +17,39 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     addField: (...args) => addField(...args)(dispatch),
+    removeField: (...args) => removeField(...args)(dispatch),
+
 });
 
 
 class RenderField extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            date: new Date()
-        }
+    state = {
+        date: new Date()
     }
 
-    listContainsObject = (list, obj) => {
-        return list.findIndex(elem => elem.fieldName === obj.fieldName)
+    deleteItemFromProps = (field) =>{
+        this.props.removeField(field.fieldName)
+        field.onMarkCheckbox?.forEach(item => {
+            this.props.removeField(item.fieldName)
+               if(item.onMarkCheckbox){
+                this.deleteItemFromProps(item) }
+             });  
+            
     }
 
-    handleCheckBox = (value, field) => {
-        if (value) {
-            const obj = { fieldName: field.fieldName, value: value, parentsFieldName: field.parentsFieldName }
-            let CheckBoxesChilds = this.props.currentForm['CheckBoxes']?.value;
-            if (CheckBoxesChilds) {
-                CheckBoxesChilds.push(obj)
-            } else {
-                this.props.addField('CheckBoxes', [obj]);
-            }
-        }else{
-            let CheckBoxesChilds = this.props.currentForm['CheckBoxes']?.value;
-            CheckBoxesChilds.filter(obj => {
-                return obj.parentsFieldName?.indexOf(field.fieldName)>-1
-            });
-            console.log('CheckBoxesChilds',CheckBoxesChilds);
-
-           // CheckBoxesChilds = xxx;
-            // CheckBoxesChilds.forEach(obj => {
-            //     if(obj.parentField.include(field.fieldName)){
-
-            //     }
-            // });
-        }
-    }
     handleChangeForm = (value, field) => {
-        if (field.parentsFieldName === undefined) {
-            this.props.addField(field.fieldName, value);
-        } else {
-            let CheckBoxesChilds = this.props.currentForm['CheckBoxes'].value;
-            const obj = { fieldName: field.fieldName, value: value, parentsFieldName: field.parentsFieldName }
-            const index = this.listContainsObject(CheckBoxesChilds, obj);
-
-            if (index > -1) {
-                CheckBoxesChilds[index].value = value;
-            } else {
-                CheckBoxesChilds.push(obj)
-            }
-
-
+        if(value === '' || value === false){
+            this.deleteItemFromProps(field)
+        }else{
+            this.props.addField(field.fieldName, value);  
         }
-
     }
 
     render() {
         console.log('this.props.currentForm', this.props.currentForm)
         const field = this.props.field;
-
         switch (field.type) {
-            case 'select':
+            case 'select': 
                 return (
                     <DropDown field={field} handleSelectChange={this.handleChangeForm}>
 
@@ -111,7 +80,7 @@ class RenderField extends React.Component {
             case 'Checkbox':
                 return (
                     <div>
-                        <CheckBox onMarkChecboxFields={field.onMarkCheckbox} field={field} handleChange={this.handleCheckBox}></CheckBox>
+                        <CheckBox onMarkChecboxFields={field.onMarkCheckbox} field={field} handleChange={this.handleChangeForm}></CheckBox>
                     </div>
                 );
 

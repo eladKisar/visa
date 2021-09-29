@@ -29,9 +29,10 @@ const formReducer = (state = initialState, action) => {
             }
         }
         case REMOVE_FIELD: {
+
             const { fieldName } = payload;
-            const { [fieldName]: _, ...currentForm } = state.currentForm;
-            return { ...state, currentForm }
+            const { [fieldName]: _, ...nissoi } = state.nissoi;
+            return { ...state, nissoi }
         }
         case LOAD_ALL_FORMS: {
             const { forms } = payload;

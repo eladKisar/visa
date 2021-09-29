@@ -19,7 +19,6 @@ export const setForm = (form) => {
 }
 
 export const addField = (fieldName,value) => {
-    console.log('addfield')
      return dispatch => {
         dispatch({
             type: ADD_FIELD,

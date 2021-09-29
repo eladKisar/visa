@@ -28,17 +28,16 @@ export const FormFields = {
         { fieldName: 'primaryCitizenship', displayName: 'אזרחות ראשית', type: 'searchBar' },
         {
             fieldName: 'foreignCitizenship', displayName: 'אזרחות זרה', type: 'Checkbox',
+            children:['foreignCitizenshipCountry', 'PassportOfForeignCitizenship'],
             onMarkCheckbox: [
                 {
                     fieldName: 'foreignCitizenshipCountry', displayName: 'איזה מדינה', type: 'searchBar',
-                    parentsFieldName: ['foreignCitizenship'],
                 },
                 {
                     fieldName: 'PassportOfForeignCitizenship', displayName: 'האם קיים דרכון של המדינה', type: 'Checkbox',
-                    parentsFieldName: ['foreignCitizenship'],
+                    children:['ForeignPassportNumber'],
                     onMarkCheckbox: [{
                         fieldName: 'ForeignPassportNumber', displayName: 'מספר דרכון', type: 'text',
-                        parentsFieldName: ['foreignCitizenship', 'PassportOfForeignCitizenship'],
                     }]
                 }
 
