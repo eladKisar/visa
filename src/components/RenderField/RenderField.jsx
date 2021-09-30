@@ -38,6 +38,9 @@ class RenderField extends React.Component {
     }
 
     handleChangeForm = (value, field) => {
+        console.log('22222222',value);
+        console.log('22222222',field);
+
         if(value === '' || value === false){
             this.deleteItemFromProps(field)
         }else{
@@ -58,8 +61,13 @@ class RenderField extends React.Component {
             case 'date':
                 return (
                     <MuiPickersUtilsProvider utils={DateUtils}>
-                        <DatePicker value={this.state.date}
-                        />
+                        <DatePicker 
+                        value={this.state.date}
+                        dateFormat="dd/MM/yyyy"
+                          onChange={date => {
+                            this.handleChangeForm(date, field);
+                            this.setState({date})}}
+/>
                         {/* <DateTimePicker
                         autoOk
                         ampm={false}
@@ -91,12 +99,13 @@ class RenderField extends React.Component {
                     </ElementsCombine>
                 )
             case 'Number':
-                return (<input type="number" min="1900" max="2099" step="1" placeHolder="1900"
+                return (<input                     id={field.fieldName}
+                     type="number" min="1900" max="2099" step="1" placeHolder="1900"
                     onChange={event => this.handleChangeForm(event.target.value, field)} />
                 )
             case 'Textarea':
                 return (<textarea
-                    id={field.field}
+                    id={field.fieldName}
                     placeHolder={field.placeHolder || ''}
                     dir="rtl"
                     // value={''}
@@ -104,7 +113,7 @@ class RenderField extends React.Component {
                 />)
             default:
                 return <input
-                    id={field.field}
+                    id={field.fieldName}
                     dir="rtl"
                     //  value={ ''}
                     maxlength={field.maxlength || "2000"}

@@ -24,7 +24,8 @@ const CheckBox = ({ onMarkChecboxFields, field,handleChange }) => {
                         if (onMarkChecboxFields) {
                             onMarkChecboxFields
                                 .filter((field) => field.disableElement !== undefined)
-                                .map((field) => {
+                                .map( (field) => {
+                                    console.log('field.disableElement',field.disableElement);
                                     document.getElementById(`${field.disableElement}`).disabled = !checkedState
                                 })
                         }
