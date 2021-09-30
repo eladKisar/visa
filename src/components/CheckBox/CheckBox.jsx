@@ -4,7 +4,6 @@ import {
     Checkbox,
 } from '@material-ui/core';
 import { useState } from "react";
-import CheckBoxFields from './CheckBoxFields/CheckBoxFields.jsx';
 import RenderField from '../RenderField/RenderField.jsx';
 
 
@@ -46,7 +45,6 @@ const CheckBox = ({ onMarkChecboxFields, field,handleChange }) => {
                                     <TableCell width="50%" align="right">{field.displayName}</TableCell>
                                 </TableRow>
                         )
-                    // <CheckBoxFields ChecboxFields={onMarkChecboxFields} fieldName = {fieldName}/>                  
                 }
                 </dev>
                 : <div />}
