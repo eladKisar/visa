@@ -12,7 +12,7 @@ import DatePicker from "react-date-picker";
 import { ContactSupportTwoTone } from '@material-ui/icons';
 
 const mapStateToProps = (state) => ({
-    currentForm: state.forms.nissoi,
+    currentForm: state.forms.currentForm,
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -3,7 +3,6 @@ import { FORM_MODES } from 'utils/constants/enums';
 
 const initialState = {
     forms: [],
-    nissoi:{},
     currentForm: {},
     mode: FORM_MODES.NEW
 };
@@ -15,24 +14,24 @@ const formReducer = (state = initialState, action) => {
             return { ...state, currentForm: initialState.currentForm, mode: FORM_MODES.NEW }
         }
         case ADD_FIELD: {
-            const { nissoi } = state;
+            const { currentForm } = state;
             const {
                 fieldName,
                   value,
             } = payload;
-            nissoi[fieldName] = { value: value }
+            currentForm[fieldName] = { value: value }
             return {
                 ...state,
-                nissoi: {
-                    ...nissoi
+                currentForm: {
+                    ...currentForm
                 }
             }
         }
         case REMOVE_FIELD: {
 
             const { fieldName } = payload;
-            const { [fieldName]: _, ...nissoi } = state.nissoi;
-            return { ...state, nissoi }
+            const { [fieldName]: _, ...currentForm } = state.currentForm;
+            return { ...state, currentForm }
         }
         case LOAD_ALL_FORMS: {
             const { forms } = payload;
