@@ -33,19 +33,29 @@ class RenderField extends React.Component {
             this.props.removeField(item.fieldName)
                if(item.onMarkCheckbox){
                 this.deleteItemFromProps(item) }
-             });  
-            
+             });              
     }
-
-    handleChangeForm = (value, field) => {
-        console.log('22222222',value);
-        console.log('22222222',field);
-
-        if(value === '' || value === false){
-            this.deleteItemFromProps(field)
-        }else{
-            this.props.addField(field.fieldName, value);  
+     containsObject = (obj, list) => {
+        var i;
+        for (i = 0; i < list.length; i++) {
+            if (list[i].fieldName === obj.fieldName) {
+                return true;
+            }
         }
+    
+        return false;
+    }
+    handleChangeForm = (value, field) => {
+        if(field.selectType){
+            this.props.currentForm[field.selectType].FieldsVales[field.fieldName] = value;
+        }else{
+            if(value === '' || value === false){
+                this.deleteItemFromProps(field)
+            }else{
+                this.props.addField(field.fieldName, value);  
+            }
+        }
+     
     }
 
     render() {
@@ -54,7 +64,8 @@ class RenderField extends React.Component {
         switch (field.type) {
             case 'select': 
                 return (
-                    <DropDown field={field} handleSelectChange={this.handleChangeForm}>
+                    <DropDown field={field} handleSelectChange={this.handleChangeForm}
+                    handleChangeForm={this.handleChangeForm}>
 
                     </DropDown>
                 );
@@ -66,8 +77,7 @@ class RenderField extends React.Component {
                         dateFormat="dd/MM/yyyy"
                           onChange={date => {
                             this.handleChangeForm(date, field);
-                            this.setState({date})}}
-/>
+                            this.setState({date})}}/>
                         {/* <DateTimePicker
                         autoOk
                         ampm={false}

@@ -19,7 +19,7 @@ const formReducer = (state = initialState, action) => {
                 fieldName,
                   value,
             } = payload;
-            currentForm[fieldName] = { value: value }
+            currentForm[fieldName] = value 
             return {
                 ...state,
                 currentForm: {

@@ -71,16 +71,16 @@ export const FormFields = {
             lessThan24HoursTrip: false,
             onSelectOption: {
                 'ADDRESS': [
-                    { fieldName: 'ApartmentStreet', displayName: 'רחוב', type: 'text' },
-                    { fieldName: 'ApartmentNumber', displayName: 'מספר דירה', type: 'text' },
-                    { fieldName: 'ApartmentCity', displayName: 'עיר', type: 'text' },
-                    { fieldName: 'ApartmentCountry', displayName: 'מדינה', type: 'searchBar' },
-                    { fieldName: 'ApartmentpostalCode', displayName: 'מיקוד', type: 'text' },
+                    { fieldName: 'ApartmentStreet', displayName: 'רחוב', type: 'text',selectType:'hotelOrAddressList' },
+                    { fieldName: 'ApartmentNumber', displayName: 'מספר דירה', type: 'text',selectType:'hotelOrAddressList' },
+                    { fieldName: 'ApartmentCity', displayName: 'עיר', type: 'text',selectType:'hotelOrAddressList' },
+                    { fieldName: 'ApartmentCountry', displayName: 'מדינה', type: 'searchBar',selectType:'hotelOrAddressList'},
+                    { fieldName: 'ApartmentpostalCode', displayName: 'מיקוד', type: 'text',selectType:'hotelOrAddressList' },
                 ],
                 'HOTEL': [
-                    { fieldName: 'hotel', displayName: 'מספר דירה', type: 'text' },
-                    { fieldName: 'HotelCity', displayName: 'עיר', type: 'text' },
-                    { fieldName: 'hotelCountry', displayName: 'מדינה', type: 'searchBar' }
+                    { fieldName: 'hotelNumber', displayName: 'מספר דירה', type: 'text',selectType:'hotelOrAddressList' },
+                    { fieldName: 'HotelCity', displayName: 'עיר', type: 'text',selectType:'hotelOrAddressList' },
+                    { fieldName: 'hotelCountry', displayName: 'מדינה', type: 'searchBar',selectType:'hotelOrAddressList' }
                 ]
             }
         },
@@ -166,12 +166,16 @@ export const FormFields = {
                     fieldName: 'groupOrOrganzizationTravel', displayName: '?האם נוסע מטעם קבוצה או ארגון', type: 'select', options: GROUP_OR_ORGANIZATION,
                     onSelectOption: {
                         'YES': [
-                            { fieldName: 'groupOrOrganzizationTravelName', displayName: 'שם הקבוצה/ארגון', type: 'text' }
+                            { fieldName: 'groupOrOrganzizationTravelName', displayName: 'שם הקבוצה/ארגון', type: 'text',
+                            selectType:'groupOrOrganzizationTravel' }
                         ],
                         'NO': [
-                            { fieldName: 'TravleWithAnotherPeopleName', displayName: 'שם פרטי', type: 'text' },
-                            { fieldName: 'TravleWithAnotherPeopleFamily', displayName: 'שם משפחה', type: 'text' },
-                            { fieldName: `TravleWithAnotherPeopleClosnes`, displayName: 'קרבה', type: 'select', options: EXPENDED_CLOSENESS },
+                            { fieldName: 'TravleWithAnotherPeopleName', displayName: 'שם פרטי', type: 'text',
+                            selectType:'groupOrOrganzizationTravel'  },
+                            { fieldName: 'TravleWithAnotherPeopleFamily', displayName: 'שם משפחה', type: 'text',
+                            selectType:'groupOrOrganzizationTravel'  },
+                            { fieldName: `TravleWithAnotherPeopleClosnes`, displayName: 'קרבה', type: 'select', options: EXPENDED_CLOSENESS,
+                            selectType:'groupOrOrganzizationTravel'  },
                         ]
                     }
                 },
