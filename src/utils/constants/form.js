@@ -89,13 +89,14 @@ export const FormFields = {
             fieldName: `trip'sPayer`, displayName: 'משלם הטיול', type: 'select', options: TRIP_PAYER,
             onSelectOption: {
                 'ANOTHER_PERSON': [
-                    { fieldName: `trip'sPayerLastName`, displayName: 'שם משפחה', type: 'text' },
-                    { fieldName: `trip'sPayerFirstName`, displayName: 'שם פרטי', type: 'text' },
-                    { fieldName: `trip'sPayerPhone`, displayName: 'מספר טלפון', type: 'text' },
-                    { fieldName: `trip'sPayerMailAddress`, displayName: 'כתובת מייל', type: 'text' },
-                    { fieldName: `trip'sPayerCloseness`, displayName: 'קרבה', type: 'select', options: CLOSENESS },
+                    { fieldName: `trip'sPayerLastName`, displayName: 'שם משפחה', type: 'text',selectType:`trip'sPayer`,selectOption: 'ANOTHER_PERSON'},
+                    { fieldName: `trip'sPayerFirstName`, displayName: 'שם פרטי', type: 'text',selectType:`trip'sPayer`,selectOption: 'ANOTHER_PERSON' },
+                    { fieldName: `trip'sPayerPhone`, displayName: 'מספר טלפון', type: 'text',selectType:`trip'sPayer`,selectOption: 'ANOTHER_PERSON' },
+                    { fieldName: `trip'sPayerMailAddress`, displayName: 'כתובת מייל', type: 'text',selectType:`trip'sPayer`,selectOption: 'ANOTHER_PERSON' },
+                    { fieldName: `trip'sPayerCloseness`, displayName: 'קרבה', type: 'select', options: CLOSENESS,selectType:`trip'sPayer`,selectOption: 'ANOTHER_PERSON' },
                     {
                         fieldName: `trip'sPayerAddressSameToCustomer`, displayName: '?האם כתובת משלם הטיול איננה זהה לכתובת הלקוח ', type: 'Checkbox',
+                        selectType:`trip'sPayer`,selectOption: 'ANOTHER_PERSON',
                         onMarkCheckbox: [
                             { fieldName: `trip'sPayerStreet`, displayName: 'רחוב', type: 'text' },
                             { fieldName: `trip'sPayerApartment`, displayName: 'מספר דירה', type: 'text' },

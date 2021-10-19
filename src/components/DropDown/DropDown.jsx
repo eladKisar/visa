@@ -5,7 +5,7 @@ import {
 import React, { useState, useEffect } from "react";
 import RenderField from '../RenderField/RenderField.jsx'
 import Select from 'react-select'
-const DropDown = ({ field, handleSelectChange,handleChangeForm }) => {
+const DropDown = ({ field, handleChangeForm }) => {
     const [selectState, setSelectState] = useState();
 
     const handleChange = (valueObj, field) => {
@@ -15,10 +15,9 @@ const DropDown = ({ field, handleSelectChange,handleChangeForm }) => {
             field.onSelectOption[value]?.forEach(element => {
                 FieldsVales[element.fieldName] = ''
               });
-              handleSelectChange({selectOption:value,FieldsVales}, field)
+              handleChangeForm({selectOption:value,FieldsVales}, field)
         }else{
               handleChangeForm(value, field);  
-
         }
        
         setSelectState(value);

@@ -33,26 +33,26 @@ class RenderField extends React.Component {
             this.props.removeField(item.fieldName)
                if(item.onMarkCheckbox){
                 this.deleteItemFromProps(item) }
+               if(item.elementsList){
+                item.elementsList.forEach(element => {
+                    this.deleteItemFromProps(element)
+                });
+            } 
              });              
     }
-     containsObject = (obj, list) => {
-        var i;
-        for (i = 0; i < list.length; i++) {
-            if (list[i].fieldName === obj.fieldName) {
-                return true;
-            }
-        }
-    
-        return false;
-    }
+   
     handleChangeForm = (value, field) => {
-        if(field.selectType){
-            this.props.currentForm[field.selectType].FieldsVales[field.fieldName] = value;
+        if(field.selectType && value !== false){
+            if(value.selectOption !==  this.props.currentForm[field.fieldName]?.selectOption){
+                console.log('111111')
+            }
+              this.props.currentForm[field.selectType].FieldsVales[field.fieldName] = value;
         }else{
             if(value === '' || value === false){
                 this.deleteItemFromProps(field)
-            }else{
-                this.props.addField(field.fieldName, value);  
+            }else{                
+                if(value.selectOption === undefined || value.selectOption !==  this.props.currentForm[field.fieldName]?.selectOption)
+                            this.props.addField(field.fieldName, value);  
             }
         }
      
@@ -64,7 +64,7 @@ class RenderField extends React.Component {
         switch (field.type) {
             case 'select': 
                 return (
-                    <DropDown field={field} handleSelectChange={this.handleChangeForm}
+                    <DropDown field={field} handleChangeForm={this.handleChangeForm}
                     handleChangeForm={this.handleChangeForm}>
 
                     </DropDown>
