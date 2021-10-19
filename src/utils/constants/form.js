@@ -1,18 +1,18 @@
 
 import { SEVERITY_OPTIONS, GENDER, INTERVIEW_LOCATION, STATUS, TRIP_DURATION, HOTEL_OR_ADDRESS, TRIP_PAYER, CLOSENESS, EXPENDED_CLOSENESS, GROUP_OR_ORGANIZATION } from './enums'
 
-export const FORM_FIELDS = [
-    { fieldName: 'id', displayName: 'מזהה משימה', type: 'text' },
-    { fieldName: 'name', displayName: 'שם הטופס', type: 'text' },
-    { fieldName: 'owner', displayName: 'נוצר ע"י', type: 'text' },
-    { fieldName: 'location', displayName: 'מיקום', type: 'text' },
-    { fieldName: 'end_time', displayName: 'זמן סיום', type: 'date' },
-    { fieldName: 'start_time', displayName: 'זמן התחלה', type: 'date' },
-    { fieldName: 'create_time', displayName: 'זמן יצירת הטופס', type: 'date' },
-    { fieldName: 'priority', displayName: 'חשיבות', type: 'select', options: SEVERITY_OPTIONS },
-].reverse();
+// export const FORM_FIELDS = [
+//     { fieldName: 'id', displayName: 'מזהה משימה', type: 'text' },
+//     { fieldName: 'name', displayName: 'שם הטופס', type: 'text' },
+//     { fieldName: 'owner', displayName: 'נוצר ע"י', type: 'text' },
+//     { fieldName: 'location', displayName: 'מיקום', type: 'text' },
+//     { fieldName: 'end_time', displayName: 'זמן סיום', type: 'date' },
+//     { fieldName: 'start_time', displayName: 'זמן התחלה', type: 'date' },
+//     { fieldName: 'create_time', displayName: 'זמן יצירת הטופס', type: 'date' },
+//     { fieldName: 'priority', displayName: 'חשיבות', type: 'select', options: SEVERITY_OPTIONS },
+// ].reverse();
 
-export const FormFields = {
+export const FORM_FIELDS = {
     '1': [
         //פרטים אישיים
         { fieldName: 'interviewLocation', displayName: 'מיקום הראיון', type: 'select', options: INTERVIEW_LOCATION },
@@ -27,17 +27,18 @@ export const FormFields = {
         { fieldName: 'mailAdress', displayName: 'כתובת מייל', type: 'text' },
         { fieldName: 'primaryCitizenship', displayName: 'אזרחות ראשית', type: 'searchBar' },
         {
-            fieldName: 'foreignCitizenship', displayName: 'אזרחות זרה', type: 'Checkbox',
-            children:['foreignCitizenshipCountry', 'PassportOfForeignCitizenship'],
+            fieldName: 'foreignCitizenship', displayName: 'אזרחות זרה', type: 'checkbox',
+           // children:['foreignCitizenshipCountry', 'PassportOfForeignCitizenship'],
             onMarkCheckbox: [
                 {
-                    fieldName: 'foreignCitizenshipCountry', displayName: 'איזה מדינה', type: 'searchBar',
+                    fieldName: 'foreignCitizenshipCountry', displayName: 'איזה מדינה', type: 'searchBar',parents:['foreignCitizenship']
                 },
                 {
-                    fieldName: 'PassportOfForeignCitizenship', displayName: 'האם קיים דרכון של המדינה', type: 'Checkbox',
-                    children:['ForeignPassportNumber'],
+                    fieldName: 'PassportOfForeignCitizenship', displayName: 'האם קיים דרכון של המדינה', type: 'checkbox',
+                    parents:['foreignCitizenship'],
                     onMarkCheckbox: [{
-                        fieldName: 'ForeignPassportNumber', displayName: 'מספר דרכון', type: 'text',
+                        fieldName: 'ForeignPassportNumber', displayName: 'מספר דרכון', type: 'text'
+                        ,parents:['foreignCitizenship','PassportOfForeignCitizenship'],
                     }]
                 }
 
@@ -95,7 +96,7 @@ export const FormFields = {
                     { fieldName: `trip'sPayerMailAddress`, displayName: 'כתובת מייל', type: 'text',selectType:`trip'sPayer`,selectOption: 'ANOTHER_PERSON' },
                     { fieldName: `trip'sPayerCloseness`, displayName: 'קרבה', type: 'select', options: CLOSENESS,selectType:`trip'sPayer`,selectOption: 'ANOTHER_PERSON' },
                     {
-                        fieldName: `trip'sPayerAddressSameToCustomer`, displayName: '?האם כתובת משלם הטיול איננה זהה לכתובת הלקוח ', type: 'Checkbox',
+                        fieldName: `trip'sPayerAddressSameToCustomer`, displayName: '?האם כתובת משלם הטיול איננה זהה לכתובת הלקוח ', type: 'checkbox',
                         selectType:`trip'sPayer`,selectOption: 'ANOTHER_PERSON',
                         onMarkCheckbox: [
                             { fieldName: `trip'sPayerStreet`, displayName: 'רחוב', type: 'text' },
@@ -105,7 +106,7 @@ export const FormFields = {
                                 fieldName: `trip'sPayeroProvinces`, type: 'ElementsCombine', display: 'inline'
                                 , elementsList: [
                                     {
-                                        fieldName: `trip'sPayeroProvincesCheckBox`, displayName: 'אינו חל', type: 'Checkbox',
+                                        fieldName: `trip'sPayeroProvincesCheckBox`, displayName: 'אינו חל', type: 'checkbox',
                                         onMarkCheckbox: [{ disableElement: `trip'sPayeroProvincesText` }]
                                     },
                                     { fieldName: `trip'sPayeroProvincesText`, displayName: 'עיר/פרובינס', type: 'text' },
@@ -115,7 +116,7 @@ export const FormFields = {
                                 fieldName: `trip'sPayeroPostalCode`, type: 'ElementsCombine', display: 'inline',
                                 elementsList: [
                                     {
-                                        fieldName: `trip'sPayeroPostalCodeCheckBox`, displayName: 'אינו חל', type: 'Checkbox',
+                                        fieldName: `trip'sPayeroPostalCodeCheckBox`, displayName: 'אינו חל', type: 'checkbox',
                                         onMarkCheckbox: [{ disableElement: `trip'sPayeroPostalCodeText` }]
                                     },
                                     { fieldName: `trip'sPayeroPostalCodeText`, displayName: 'מיקוד', type: 'text' },
@@ -137,7 +138,7 @@ export const FormFields = {
                         fieldName: `trip'sPayeroOrganiztionProvinces`, type: 'ElementsCombine', display: 'inline'
                         , elementsList: [
                             {
-                                fieldName: `trip'sPayeroOrganiztionProvincesCheckBox`, displayName: 'אינו חל', type: 'Checkbox',
+                                fieldName: `trip'sPayeroOrganiztionProvincesCheckBox`, displayName: 'אינו חל', type: 'checkbox',
                                 onMarkCheckbox: [{ disableElement: `trip'sPayeroOrganiztionProvincesText` }]
                             },
                             { fieldName: `trip'sPayeroOrganiztionProvincesText`, displayName: 'עיר/פרובינס', type: 'text' },
@@ -147,7 +148,7 @@ export const FormFields = {
                         fieldName: `trip'sPayeroOrganiztionPostalCode`, type: 'ElementsCombine', display: 'inline',
                         elementsList: [
                             {
-                                fieldName: `trip'sPayeroOrganiztionPostalCodeCheckBox`, displayName: 'אינו חל', type: 'Checkbox',
+                                fieldName: `trip'sPayeroOrganiztionPostalCodeCheckBox`, displayName: 'אינו חל', type: 'checkbox',
                                 onMarkCheckbox: [{ disableElement: `trip'sPayeroOrganiztionPostalCodeText` }]
                             },
                             { fieldName: `trip'sPayeroOrganiztionPostalCodeText`, displayName: 'מיקוד', type: 'text' },
@@ -161,7 +162,7 @@ export const FormFields = {
             }
         },
         {
-            fieldName: 'TravleWithMorePeople', displayName: 'האם נוסעים איתך אנשים נוספים', type: 'Checkbox',
+            fieldName: 'TravleWithMorePeople', displayName: 'האם נוסעים איתך אנשים נוספים', type: 'checkbox',
             onMarkCheckbox: [
                 {
                     fieldName: 'groupOrOrganzizationTravel', displayName: '?האם נוסע מטעם קבוצה או ארגון', type: 'select', options: GROUP_OR_ORGANIZATION,
@@ -189,7 +190,7 @@ export const FormFields = {
 
     '3': [
         {
-            fieldName: 'PreviousVisitsToUS', displayName: 'האם ביקרת בארה"ב?', type: 'Checkbox',
+            fieldName: 'PreviousVisitsToUS', displayName: 'האם ביקרת בארה"ב?', type: 'checkbox',
             onMarkCheckbox: [
                 { fieldName: 'PreviousVisitsToUSDDate', displayName: 'תאריך הביקור', type: 'date' },
                 { fieldName: 'PreviousVisitsToUSDurationselect', displayName: 'הזנת מספר', type: 'select', options: TRIP_DURATION },
@@ -200,34 +201,34 @@ export const FormFields = {
             ]
         },
         {
-            fieldName: 'IssuedUSVisa', displayName: 'האם הונפקה לך בעבר ויזה לארה"ב', type: 'Checkbox',
+            fieldName: 'IssuedUSVisa', displayName: 'האם הונפקה לך בעבר ויזה לארה"ב', type: 'checkbox',
             onMarkCheckbox: [
                 { fieldName: 'IssuanceVisaDate', displayName: 'תאריך הנפקת ויזה', type: 'date' },
                 {
                     fieldName: `trip'sPayeroOrganiztionPostalCode`, type: 'ElementsCombine', display: 'inline',
                     elementsList: [
                         {
-                            fieldName: `USVisaNumberCheckBox`, displayName: 'לא ידוע', type: 'Checkbox',
+                            fieldName: `USVisaNumberCheckBox`, displayName: 'לא ידוע', type: 'checkbox',
                             onMarkCheckbox: [{ disableElement: `USVisaNumber` }]
                         },
                         { fieldName: `USVisaNumber`, displayName: 'מספר ויזה לארה"ב', type: 'text' },
                     ]
                 },
-                { fieldName: `ApplyingSameVisaTypeCheckbox`, displayName: 'האם מגיש בקשה לאותו סוג ויזה', type: 'Checkbox' },
-                { fieldName: `ApplyVisaAtSameLocationCheckbox`, displayName: 'האם מגיש בקשה באותו מיקום ', type: 'Checkbox' },
-                { fieldName: `Gave10FingerClaimCheckbox`, displayName: 'האם נתן 10 תביעות אצבע', type: 'Checkbox' },
+                { fieldName: `ApplyingSameVisaTypeCheckbox`, displayName: 'האם מגיש בקשה לאותו סוג ויזה', type: 'checkbox' },
+                { fieldName: `ApplyVisaAtSameLocationCheckbox`, displayName: 'האם מגיש בקשה באותו מיקום ', type: 'checkbox' },
+                { fieldName: `Gave10FingerClaimCheckbox`, displayName: 'האם נתן 10 תביעות אצבע', type: 'checkbox' },
                 {
-                    fieldName: 'VisaHasBeenLostCheckbox', displayName: 'האם הויזה שלך אבדה/נגנבה', type: 'Checkbox',
+                    fieldName: 'VisaHasBeenLostCheckbox', displayName: 'האם הויזה שלך אבדה/נגנבה', type: 'checkbox',
                     onMarkCheckbox: [
                         { fieldName: 'VisaHasBeenLostDate', displayName: 'שנה', type: 'Number' },
                         { fieldName: 'VisaHasBeenLostText', displayName: 'הסבר', type: 'Textarea' }]
                 },
                 {
-                    fieldName: 'VisaHasBeenCanceledCheckbox', displayName: 'האם הויזה שלך בוטלה/נשללה', type: 'Checkbox',
+                    fieldName: 'VisaHasBeenCanceledCheckbox', displayName: 'האם הויזה שלך בוטלה/נשללה', type: 'checkbox',
                     onMarkCheckbox: [{ fieldName: 'VisaHasBeenCanceledText', displayName: 'הסבר', type: 'Textarea' }]
                 },
                 {
-                    fieldName: 'VisaAplicationDeniedCheckbox', displayName: 'האם סורבה בקשתך לויזה לארה"ב', type: 'Checkbox',
+                    fieldName: 'VisaAplicationDeniedCheckbox', displayName: 'האם סורבה בקשתך לויזה לארה"ב', type: 'checkbox',
                     onMarkCheckbox: [
                         {
                             fieldName: 'VisaAplicationDeniedText', displayName: 'הסבר', type: 'Textarea',
@@ -235,18 +236,18 @@ export const FormFields = {
                                     of the U.S Embassy in Israel under section 214/b`}]
                 },
                 {
-                    fieldName: 'AppliedForGreenCardCheckbox', displayName: 'האם הגישו עבורך בקשה לגרין קארד', type: 'Checkbox',
+                    fieldName: 'AppliedForGreenCardCheckbox', displayName: 'האם הגישו עבורך בקשה לגרין קארד', type: 'checkbox',
                     onMarkCheckbox: [{ fieldName: 'AppliedForGreenCardText', displayName: 'הסבר', type: 'Textarea' }]
                 },
                 {
-                    fieldName: 'ESTARequestDeniedCheckbox', displayName: 'ESTAהאם סורבה בקשתך ל', type: 'Checkbox',
+                    fieldName: 'ESTARequestDeniedCheckbox', displayName: 'ESTAהאם סורבה בקשתך ל', type: 'checkbox',
                     onMarkCheckbox: [{ fieldName: 'ESTARequestDeniedCheckBoxText', displayName: 'הסבר', type: 'Textarea' }]
                 },
                 {
                     fieldName: `trip'sPayeroProvinces`, type: 'ElementsCombine', display: 'inline'
                     , elementsList: [
                         {
-                            fieldName: 'HoldAnSSNCheckbox', displayName: ' האם אתה מחזיק SSN', type: 'Checkbox',
+                            fieldName: 'HoldAnSSNCheckbox', displayName: ' האם אתה מחזיק SSN', type: 'checkbox',
                             onMarkCheckbox: []
                         },
                         { fieldName: `HoldAnSSNText1`, displayName: '', maxlength: "4", type: 'text' },
@@ -260,14 +261,14 @@ export const FormFields = {
                     fieldName: `HeldAmericanTaxpayerNumberCombine`, type: 'ElementsCombine', display: 'inline'
                     , elementsList: [
                         {
-                            fieldName: 'HeldAmericanTaxpayerNumberCheckbox', displayName: 'האם חזקת מספר משלם מס אמריקאי', type: 'Checkbox',
+                            fieldName: 'HeldAmericanTaxpayerNumberCheckbox', displayName: 'האם חזקת מספר משלם מס אמריקאי', type: 'checkbox',
                             onMarkCheckbox: [{ disableElement: 'HeldAmericanTaxpayerNumberText' }]
                         },
                         { fieldName: `HeldAmericanTaxpayerNumberText`, displayName: 'הסבר', type: 'text' },
                     ]
                 },
                 {
-                    fieldName: 'lostOrStolenPassportCheckbox', displayName: 'האם אי פעם אבד או נגנב לך דרכון', type: 'Checkbox',
+                    fieldName: 'lostOrStolenPassportCheckbox', displayName: 'האם אי פעם אבד או נגנב לך דרכון', type: 'checkbox',
                     onMarkCheckbox: [
                         { fieldName: 'LostPassportNumberText', displayName: 'מספר דרכון', type: 'text' },
                         { fieldName: 'CountryIssuedPassportSearch', displayName: 'מדינה שהנפיקה את הדרכון', type: 'searchBar' },
